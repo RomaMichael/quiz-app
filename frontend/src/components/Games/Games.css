@@ -1,0 +1,37 @@
+.games {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuplB4T9OrFFF1VvlxIIfKMPZ_HnqrXTeBlQ&usqp=CAU");
+  min-height: 800px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+.games .games-buttons {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.games .games-buttons a {
+  text-decoration: none;
+}
+.games .games-buttons a .memory-game-button {
+  background-color: rgb(20, 253, 20);
+  border-radius: 30px;
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  font-family: 700;
+  text-transform: uppercase;
+}
+.games .games-buttons a .differents-game-button {
+  background-color: rgb(20, 195, 253);
+  border-radius: 30px;
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  font-family: 700;
+  text-transform: uppercase;
+}/*# sourceMappingURL=Games.css.map */

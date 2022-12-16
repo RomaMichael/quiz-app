@@ -1,0 +1,34 @@
+.learning {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXBlSoqCGW1ayYesulveKi9tNDvBaR5vh4eQ&usqp=CAU");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 800px;
+  display: flex;
+  justify-content: center;
+}
+.learning .learning-container {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.learning .learning-container .buttons-header {
+  display: flex;
+  justify-content: flex-start;
+  width: 90vw;
+}
+.learning .learning-container .buttons-header .choose-state {
+  width: 250px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+.learning .learning-container .buttons-header .choose-state button {
+  border: none;
+  border-radius: 8px;
+  height: 30px;
+  width: 100px;
+  background-color: rgb(83, 83, 254);
+  color: white;
+}/*# sourceMappingURL=Learning.css.map */

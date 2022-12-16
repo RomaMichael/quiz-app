@@ -1,0 +1,23 @@
+.switchmemorygame {
+  .switchmemorygame-container {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    .choose-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      .animal-cards {
+        .animal-card {
+          border-radius: 8px;
+          box-shadow: 7px 7px 7px;
+          &:hover {
+            transform: scale(1.5);
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+  }
+}

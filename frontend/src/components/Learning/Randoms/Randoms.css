@@ -1,0 +1,15 @@
+.random .random-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.random .random-container button {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+  height: 100vh;
+}
+.random .random-container .randomData {
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=Randoms.css.map */

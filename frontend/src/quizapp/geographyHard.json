@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What is the Capital city of Israel?",
+    "wrongAnswers": ["Tel Aviv", "Beer Sheva", "Haifa"],
+    "rightAns": ["Jerusalem"]
+  },
+  {
+    "question": "What is the Capital city of Moldova?",
+    "wrongAnswers": ["Benderi", "Tiraspol", "Ribnitsa"],
+    "rightAns": ["Chishinau"]
+  },
+  {
+    "question": "What is the Capital city of Japan?",
+    "wrongAnswers": ["Yokohama", "Osaka", "Hiroshima"],
+    "rightAns": ["Tokyo"]
+  },
+  {
+    "question": "What is the Capital city of Germany?",
+    "wrongAnswers": ["Drezden", "Munchen", "Hamburg"],
+    "rightAns": ["Berlin"]
+  },
+  {
+    "question": "What is the Capital city of Hungary?",
+    "wrongAnswers": ["Szombathely", "Gyor", "Szolnok"],
+    "rightAns": ["Budapest"]
+  },
+  {
+    "question": "What is the Capital city of Italy?",
+    "wrongAnswers": ["Venice", "Verona", "Milano"],
+    "rightAns": ["Rome"]
+  },
+  {
+    "question": "What is the Capital city of Netherlands?",
+    "wrongAnswers": ["Rotterdam", "Haag", "Eindhoven"],
+    "rightAns": ["Amsterdam"]
+  },
+  {
+    "question": "What is the Capital city of Greece?",
+    "wrongAnswers": ["Sparta", "Yanina", "Volos"],
+    "rightAns": ["Athens"]
+  },
+  {
+    "question": "What is the Capital city of France?",
+    "wrongAnswers": [],
+    "rightAns": ["Paris"]
+  },
+  {
+    "question": "What is the Capital city of Spain?",
+    "wrongAnswers": ["Barcelona", "Valencia", "Malaga"],
+    "rightAns": ["Madrid"]
+  }
+]

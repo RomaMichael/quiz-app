@@ -1,0 +1,11 @@
+.memoryCard {
+  display: flex;
+  justify-content: center;
+}
+.memoryCard .memoryCard-container {
+  width: 90vw;
+}
+.memoryCard .memoryCard-container .the-cards {
+  display: flex;
+  justify-content: center;
+}/*# sourceMappingURL=MemoryGame.css.map */

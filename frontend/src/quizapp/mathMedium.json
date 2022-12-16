@@ -1,0 +1,12 @@
+[
+  { "question": "1 x 1", "wrongAnswers": [2, 3, 4], "rightAns": 1 },
+  { "question": "1 x 2", "wrongAnswers": [3, 4, 1], "rightAns": 2 },
+  { "question": "2 x 5", "wrongAnswers": [6, 8, 3], "rightAns": 10 },
+  { "question": "1 x 5", "wrongAnswers": [10, 6, 8], "rightAns": 5 },
+  { "question": "3 x 2", "wrongAnswers": [8, 5, 1], "rightAns": 6 },
+  { "question": "3 x 3", "wrongAnswers": [1, 4, 6], "rightAns": 9 },
+  { "question": "6 / 3", "wrongAnswers": [9, 6, 3], "rightAns": 2 },
+  { "question": "6 / 6", "wrongAnswers": [6, 8, 2], "rightAns": 1 },
+  { "question": "3 / 1", "wrongAnswers": [1, 0, 6], "rightAns": 3 },
+  { "question": "8 / 4", "wrongAnswers": [4, 7, 6], "rightAns": 2 }
+]

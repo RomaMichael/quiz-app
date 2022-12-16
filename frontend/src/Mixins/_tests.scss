@@ -1,0 +1,20 @@
+@mixin test {
+  width: 200px;
+  height: 300px;
+}
+
+@mixin testContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 120px;
+}
+
+@mixin buttonsLevel {
+  height: 30px;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(6, 43, 255);
+  border-radius: 8px;
+}

@@ -1,0 +1,35 @@
+.the-test {
+  background-image: url("https://tse4.mm.bing.net/th?id=OIP.0Yza4haupz4RSRrNXty9wQHaF5&pid=Api&P=0");
+  min-height: 800px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    width: 95vw;
+  }
+  .test-container {
+    .before-test {
+      height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .starter-question {
+        font-size: 40px;
+      }
+      .button-starter {
+        .starter {
+          width: 100px;
+          height: 40px;
+          border-radius: 8px;
+          background-color: aqua;
+        }
+      }
+    }
+  }
+}

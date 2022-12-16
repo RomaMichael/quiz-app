@@ -1,0 +1,19 @@
+.switchmemorygame .switchmemorygame-container {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+.switchmemorygame .switchmemorygame-container .choose-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.switchmemorygame .switchmemorygame-container .choose-cards .animal-cards .animal-card {
+  border-radius: 8px;
+  box-shadow: 7px 7px 7px;
+}
+.switchmemorygame .switchmemorygame-container .choose-cards .animal-cards .animal-card:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
+}/*# sourceMappingURL=SwitchMemoryGame.css.map */

@@ -1,0 +1,13 @@
+.memoryCard {
+  display: flex;
+  justify-content: center;
+
+  .memoryCard-container {
+    width: 90vw;
+
+    .the-cards {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

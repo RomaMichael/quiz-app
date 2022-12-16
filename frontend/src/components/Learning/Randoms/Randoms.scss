@@ -1,0 +1,17 @@
+.random {
+  .random-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    button {
+      font-size: 30px;
+      border: none;
+      background-color: transparent;
+      height: 100vh;
+    }
+    .randomData {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

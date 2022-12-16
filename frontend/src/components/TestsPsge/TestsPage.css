@@ -1,0 +1,87 @@
+.tests-page {
+  min-height: 800px;
+  background-image: url("https://s.abcnews.com/images/US/GTY_standardized_test_form_jt_150601_16x9_992.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tests-page .tests-page-container {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.tests-page .tests-page-container .tests-section {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+}
+.tests-page .tests-page-container .tests-section .math-test {
+  width: 200px;
+  height: 300px;
+}
+.tests-page .tests-page-container .tests-section .math-test img {
+  width: 200px;
+  height: 170px;
+}
+.tests-page .tests-page-container .tests-section .math-test .buttons-level-math {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 120px;
+}
+.tests-page .tests-page-container .tests-section .math-test .buttons-level-math button {
+  height: 30px;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(6, 43, 255);
+  border-radius: 8px;
+}
+.tests-page .tests-page-container .tests-section .geo-test {
+  width: 200px;
+  height: 300px;
+}
+.tests-page .tests-page-container .tests-section .geo-test img {
+  width: 200px;
+  height: 170px;
+}
+.tests-page .tests-page-container .tests-section .geo-test .buttons-level-geo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 120px;
+}
+.tests-page .tests-page-container .tests-section .geo-test .buttons-level-geo button {
+  height: 30px;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(6, 43, 255);
+  border-radius: 8px;
+}
+.tests-page .tests-page-container .tests-section .music-test {
+  width: 200px;
+  height: 300px;
+}
+.tests-page .tests-page-container .tests-section .music-test img {
+  width: 200px;
+  height: 170px;
+}
+.tests-page .tests-page-container .tests-section .music-test .buttons-level-music {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 120px;
+}
+.tests-page .tests-page-container .tests-section .music-test .buttons-level-music button {
+  height: 30px;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(6, 43, 255);
+  border-radius: 8px;
+}/*# sourceMappingURL=TestsPage.css.map */
