@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import ChooseChars from "./ChooseChars/ChooseChars";
 import "./SwitchMemoryGame.css";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 export default function SwitchMemoryGame({
-  setCardsShuffle,
-  cardsShuffle,
+  showCards,
   setSwitcher,
   setShowCards,
   cards,
   setCards,
+  animals,
+  cartoons,
+  chars,
+  setChars,
 }) {
   const [pickedCards, setPickedCards] = useState(0);
 
@@ -21,59 +26,122 @@ export default function SwitchMemoryGame({
       setPickedCards((prev) => prev + 1);
 
       const currrentCharacter = cards[i].name;
-      const findCards = cards.filter((card) => card.name === currrentCharacter);
+      const findCard = cards.filter((card) => card.name === currrentCharacter);
+      console.log(findCard);
 
-      setCardsShuffle((prev) => {
-        const currentIndex = cardsShuffle.findIndex(
-          (card) => card.name === cards[i].name
+      const currentIndex = showCards.findIndex(
+        (card) => card.name === cards[i].name
+      );
+
+      if (currentIndex === -1) {
+        setShowCards((prev) => {
+          return [...prev, ...findCard];
+        });
+        setCards((prev) =>
+          prev.map((card) => {
+            if (card.id === findCard[0].id) {
+              console.log(card.name);
+              return { ...card, picked: true };
+            } else {
+              return card;
+            }
+          })
         );
-        if (currentIndex === -1) {
-          // setCards((prev) => ({ ...prev, picked: true }));
-          setShowCards((prev) => [...prev, ...findCards]);
-          return [...prev, { ...cards[i], picked: true }];
-        } else {
-          return;
-        }
-      });
+      } else {
+        return;
+      }
     }
     if (pickedCards === 9) {
-      setTimeout(() => setSwitcher(true), 2000);
+      setTimeout(() => setSwitcher(true), 1000);
 
       return;
     }
   };
+  const pickCartoons = () => {
+    setCards(cartoons);
+    setChars(true);
+  };
+
+  const pickAnimalss = () => {
+    setCards(animals);
+    setChars(true);
+  };
+
+  const allChars = () => {
+    setChars(true);
+  };
 
   return (
     <div className="switchmemorygame">
-      <div className="switchmemorygame-container">
-        <div className="choose-cards-title">
-          <h1>Choose characters for playing</h1>
+      {chars ? (
+        <div className="switchmemorygame-container">
+          <div
+            className="button-back"
+            style={{ display: "flex", jusifyContent: "flex-start" }}
+          >
+            <button
+              onClick={() => setChars(false)}
+              style={{
+                position: "relative",
+                left: "80px",
+                top: "30px",
+                border: "none",
+                backgroundColor: "transparent",
+              }}
+            >
+              <BsFillArrowLeftCircleFill
+                style={{
+                  fontSize: "40px",
+                }}
+              />
+            </button>
+          </div>
+          <div className="choose-cards-title">
+            <h1>Choose characters for playing</h1>
+          </div>
+          <div className="choose-cards">
+            {" "}
+            {cards.map((card, i) => {
+              if (i % 2 === 0) {
+                return (
+                  <div
+                    key={i}
+                    onClick={card.picked ? null : () => pickCard(i)}
+                    className="animal-cards"
+                  >
+                    {card.picked ? (
+                      <div
+                        style={{
+                          width: "150px",
+                          height: "100px",
+                          borderRadius: "8px",
+                          border: "1px solid black",
+                        }}
+                      ></div>
+                    ) : (
+                      <img
+                        src={card.img}
+                        alt={card.name}
+                        style={{ width: "150px", height: "100px" }}
+                        className="animal-card"
+                      />
+                    )}
+                  </div>
+                );
+              }
+            })}
+          </div>
+          <h3>You picked {pickedCards}/10 cards </h3>
         </div>
-        <div className="choose-cards">
-          {" "}
-          {cards.map((card, i) => {
-            if (i % 2 === 0) {
-              return (
-                <div
-                  key={i}
-                  onClick={() => pickCard(i)}
-                  className="animal-cards"
-                >
-                  {card.picked ? null : (
-                    <img
-                      src={card.img}
-                      alt={card.name}
-                      style={{ width: "150px", height: "100px" }}
-                      className="animal-card"
-                    />
-                  )}
-                </div>
-              );
-            }
-          })}
-        </div>
-        <h3>You picked {pickedCards}/10 cards </h3>
-      </div>
+      ) : (
+        <ChooseChars
+          animals={animals}
+          cartoons={cartoons}
+          pickCartoons={pickCartoons}
+          pickAnimalss={pickAnimalss}
+          allChars={allChars}
+        />
+      )}
     </div>
   );
 }

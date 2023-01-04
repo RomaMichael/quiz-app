@@ -7,13 +7,13 @@
   .home-container {
     display: flex;
     flex-direction: column;
-    min-height: 800px;
+    min-height: 600px;
     align-items: center;
     justify-content: center;
 
     .home-title {
-      position: relative;
-      bottom: 150px;
+      // position: relative;
+      // bottom: 150px;
       h1 {
         font-size: 50px;
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",

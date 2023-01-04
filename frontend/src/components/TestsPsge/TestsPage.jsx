@@ -1,18 +1,13 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLink } from "../../context/LinkProvider";
+
 import { useTest } from "../../context/TestProvider";
 import "./TestsPage.css";
 
 export default function TestsPage() {
-  const { setLink } = useLink();
   const { setTest, setTestLevel } = useTest();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setLink("/testspage");
-  }, []);
 
   const easyMath = () => {
     setTest("math");

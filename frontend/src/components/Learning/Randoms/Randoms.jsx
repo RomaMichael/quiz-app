@@ -56,9 +56,10 @@ export default function Randoms() {
             >
               <h2
                 style={{
-                  fontSize: "40px",
-                  color: "green",
+                  fontSize: "45px",
+
                   textTransform: "uppercase",
+                  fontFamily: "revert",
                 }}
               >
                 Learn more about it

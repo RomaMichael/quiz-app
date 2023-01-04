@@ -1,16 +1,10 @@
 import React from "react";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useLink } from "../../context/LinkProvider";
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import "./Games.css";
 
 export default function Games() {
-  const { link, setLink } = useLink();
-
-  // useEffect(() => {
-  //   setLink("/games");
-  // }, []);
-  // console.log(link);
   return (
     <div className="games">
       <div className="games-buttons">

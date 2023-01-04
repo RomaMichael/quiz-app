@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { useState } from "react";
-import LearningData from "../quizapp/learning.json";
 
 const learningContext = createContext();
 
 export function LearningProvider({ children }) {
-  const [learningData, setLearningData] = useState(LearningData);
+  const [learningData, setLearningData] = useState([]);
+
+  useEffect(() => {
+    fetchLearning();
+  }, []);
+
+  const fetchLearning = async () => {
+    try {
+      const res = await fetch("http://localhost:8006/learning");
+      const data = await res.json();
+      setLearningData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const value = {
     learningData,

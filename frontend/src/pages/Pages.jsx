@@ -1,22 +1,24 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useLearning } from "../context/LearningProvider";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import "./Pages.css";
 
 export default function Pages() {
   const params = useParams();
-  const { learningData, setLearningData } = useLearning();
+  const { learningData } = useLearning();
   const currentPage = learningData.find((data) => data.id === params.id);
-  console.log(currentPage);
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="pages">
       <div className="backButton">
-        <Link to={"/learning"}>
-          <button>
-            <AiOutlineArrowLeft />
-          </button>
-        </Link>
+        <button onClick={goBack}>
+          <AiOutlineArrowLeft />
+        </button>
       </div>
 
       <div className="pages-container">

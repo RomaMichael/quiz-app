@@ -1,0 +1,19 @@
+.filterLearningCards {
+  position: fixed;
+  left: 20px;
+
+  .filterLearningCards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 30px;
+    input {
+      width: 150px;
+      box-sizing: border-box;
+    }
+    select {
+      width: 150px;
+    }
+  }
+}

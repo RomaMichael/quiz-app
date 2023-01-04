@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./MemoryGame.css";
-export default function MemoryGame({
-  switcher,
-
-  cards,
-  setShowCards,
-  showCards,
-}) {
+export default function MemoryGame({ switcher, setShowCards, showCards }) {
   const [counter, setCounter] = useState(0);
   const [firstCard, setFirstCard] = useState();
   const [secondCard, setSecondCard] = useState();
   const [wrongTry, setWrongTry] = useState(0);
-
   const [score, setScore] = useState(0);
 
   let currentCard = [];
 
   useEffect(() => {
-    console.log("switch");
     setShowCards((prev) => prev.sort(() => Math.random() - 0.5));
     setShowCards((prev) => prev.map((card) => ({ ...card, match: false })));
   }, [switcher]);
@@ -54,17 +46,21 @@ export default function MemoryGame({
             }
           })
         );
-      }, 1500);
+      }, 1000);
     }
     setFirstCard(null);
     setSecondCard(null);
   };
-  // console.log(showCards);
+
   const clickOnCard = (id, i) => {
     currentCard = showCards.find((card) => card.id === id);
 
     setShowCards((prev) =>
       prev.map((card) => {
+        if (firstCard && secondCard) {
+          return { ...card, open: false };
+        }
+
         if (card.id === currentCard.id) {
           return { ...card, open: true };
         } else {
@@ -119,7 +115,7 @@ export default function MemoryGame({
                   onClick={() => clickOnCard(card.id, i)}
                   style={{
                     width: "190px",
-                    height: "110px",
+                    height: "100px",
                     border: "1px solid black",
                     backgroundImage: card.match
                       ? `url(${card.img})`

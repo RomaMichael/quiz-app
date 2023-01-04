@@ -4,6 +4,7 @@
   justify-content: center;
   height: 70px;
   align-items: center;
+  background-color: rgb(145, 253, 253);
 }
 .nav .nav-container {
   width: 95vw;
@@ -22,8 +23,12 @@
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  width: 250px;
+  width: 300px;
   height: 70px;
+}
+.nav .nav-container .menu-items .li-item-active {
+  -webkit-animation: navLinks 0.5s 0 1;
+          animation: navLinks 0.5s 0 1;
 }
 .nav .nav-container .nav-buttons {
   display: flex;
@@ -31,4 +36,22 @@
   width: 150px;
   height: 70px;
   justify-content: space-between;
+}
+
+@-webkit-keyframes navLinks {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1.5;
+  }
+}
+
+@keyframes navLinks {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1.5;
+  }
 }/*# sourceMappingURL=Nav.css.map */
