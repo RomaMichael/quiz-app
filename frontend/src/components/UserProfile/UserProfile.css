@@ -1,0 +1,28 @@
+.user-profile {
+  background-image: url("https://wallpapercave.com/dwp2x/wp2912715.jpg");
+  min-height: 800px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+.user-profile .user-profile-container {
+  width: 90vw;
+}
+.user-profile .user-profile-container .user-profile-title {
+  margin-top: 100px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 27px;
+  display: flex;
+  gap: 70px;
+}
+.user-profile .user-profile-container .user-profile-title img {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+}
+.user-profile .user-profile-container .my-wall {
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=UserProfile.css.map */

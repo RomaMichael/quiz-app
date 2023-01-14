@@ -127,7 +127,19 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
           ))}
         </div>
         <h2>Score: {score}</h2>
-        <button onClick={reset}>Reset</button>
+        <button
+          onClick={reset}
+          style={{
+            backgroundColor: "red",
+            color: "white",
+            width: "100px",
+            height: "30px",
+            border: "none",
+            borderRadius: "10px",
+          }}
+        >
+          Reset
+        </button>
       </div>
     </div>
   );

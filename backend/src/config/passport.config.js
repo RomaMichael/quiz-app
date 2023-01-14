@@ -3,10 +3,12 @@ const { validPassword } = require("../utility/crypto.utility");
 
 const verifyCallback = async (username, password, cb) => {
   const user = await User.findOne({ username }).lean();
+  console.log(`verify`);
 
   if (!user) {
     return cb(null, false);
   }
+
   const isValid = validPassword(password, user.hash, user.salt);
   if (!isValid) {
     console.log("Wrong credentials");
@@ -17,6 +19,7 @@ const verifyCallback = async (username, password, cb) => {
 };
 
 const serialize = (user, cb) => {
+  console.log("serialize");
   try {
     return cb(null, user._id);
   } catch (error) {
@@ -25,6 +28,8 @@ const serialize = (user, cb) => {
 };
 
 const deserialize = async (userId, cb) => {
+  console.log("deserialize");
+
   try {
     const user = await User.findById(userId);
 

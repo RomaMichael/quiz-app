@@ -10,14 +10,23 @@ const avatarSchema = new Schema(
 );
 
 const userSchema = new Schema({
+  _id: { type: String, required: false },
   username: { type: String, require: true },
-  age: { type: Number, require: true },
   email: { type: String, require: true },
   hash: { type: String, required: true },
   salt: { type: String, required: true },
+  creationDate: { type: String, required: true },
+  results: { type: Array, require: true },
+  role: {
+    type: String,
+    required: true,
+    default: "user",
+    enum: ["admin", "user"],
+  },
   avatar: avatarSchema,
+  myContent: { type: Array },
 });
 
 const User = mongoose.model("Users", userSchema);
 
-module.exports = { User };
+module.exports = { User, userSchema };

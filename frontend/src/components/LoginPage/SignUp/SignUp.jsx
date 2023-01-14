@@ -15,6 +15,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import uuid4 from "uuid4";
 import "./SignUp.css";
 import { useState } from "react";
+
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../../context/UserProvider";
 
 function Copyright(props) {
@@ -40,25 +43,44 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [createdUser, setCreatedUser] = useState({
-    id: uuid4(),
+    _id: uuid4(),
+    results: [],
+    myContent: [],
   });
 
-  const { regUser } = useUsers();
+  const { login } = useUsers();
 
-  const createNewUser = () => {
+  const navigate = useNavigate();
+
+  const createNewUser = async (createdUser) => {
     if (createdUser.password !== createdUser.verifyPassword) {
       console.log("error");
       return;
     }
+
     const formData = new FormData();
-    formData.append("id", createdUser.id);
+    formData.append("_id", uuid4());
     formData.append("username", createdUser.username);
     formData.append("email", createdUser.email);
     formData.append("password", createdUser.password);
-    // formData.append("verifyPassword", createdUser.verifyPassword);
-    console.log(createdUser);
-    console.log(formData);
-    regUser(formData);
+    formData.append("avatar", createdUser.avatar);
+    formData.append("myContent", createdUser.myContent);
+    formData.append("creationDate", moment().format("MMM Do YY"));
+
+    await fetch("http://localhost:8006/users/register", {
+      method: "POST",
+      body: formData,
+    });
+
+    const username = createdUser.username;
+    const password = createdUser.password;
+    const credentials = {
+      username,
+      password,
+    };
+
+    login(credentials);
+    navigate("/", { replace: true });
   };
 
   const signUp = async (event) => {
@@ -165,8 +187,9 @@ export default function SignUp() {
                     type="file"
                     id="file"
                     onChange={(e) =>
-                      setCreatedUser((prev) => {
-                        return { ...prev, avatar: e.target.file };
+                      setCreatedUser({
+                        ...createdUser,
+                        avatar: e.target.files[0],
                       })
                     }
                   />

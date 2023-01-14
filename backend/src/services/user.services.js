@@ -1,6 +1,7 @@
 const { User } = require("../models/user.model");
 const { genPassword } = require("../utility/crypto.utility");
 const { uploadFile } = require("./cloudinary.services");
+const uuid4 = require("uuid4");
 
 const registerUser = async (user, file) => {
   try {
@@ -27,4 +28,12 @@ const registerUser = async (user, file) => {
   }
 };
 
-module.exports = { registerUser };
+const updateUser = async (id, user) => {
+  try {
+    const updated = await User.findByIdAndUpdate(id, user, { new: true });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { registerUser, updateUser };

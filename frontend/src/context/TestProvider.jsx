@@ -22,9 +22,9 @@ export function TestProvider({ children }) {
     }
   };
 
-  const testType = allTests.filter((item) => item.subject === test);
-
-  const currentTest = testType.filter((item) => item.level === testLevel);
+  const currentTest = allTests.filter(
+    (item) => item.subject === test && item.level === testLevel
+  );
 
   const value = {
     test,

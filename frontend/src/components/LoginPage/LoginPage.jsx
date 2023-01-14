@@ -13,7 +13,7 @@ import FaceIcon from "@mui/icons-material/Face";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useUsers } from "../../context/UserProvider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
@@ -40,28 +40,19 @@ export default function LoginPage() {
   const [credentials, setCredentials] = useState({});
   const navigate = useNavigate();
 
-  const { setUser } = useUsers();
-
-  const login = async (credentials) => {
-    const response = await fetch("http://localhost:8006/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(credentials),
-      credentials: "include",
-    });
-    const { user } = await response.json();
-    console.log("hey");
-    if (response.status === 200) {
-      console.log(response.status);
-      // setUser({ ...user, isLoggedIn: true });
-      navigate("/", { replace: true });
-    }
-  };
+  const { login, user } = useUsers();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     login(credentials);
+    console.log(user);
   };
+
+  useEffect(() => {
+    if (user.isLoggedIn) {
+      navigate("/", { replace: true });
+    }
+  }, [user]);
 
   return (
     <ThemeProvider theme={theme}>

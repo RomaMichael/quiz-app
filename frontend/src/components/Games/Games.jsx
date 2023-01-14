@@ -1,22 +1,26 @@
 import React from "react";
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { useUsers } from "../../context/UserProvider";
+import LoginButton from "../buttons/LoginButton";
 import "./Games.css";
 
 export default function Games() {
+  const { user } = useUsers();
   return (
     <div className="games">
-      <div className="games-buttons">
-        <Link to={"/memorygame"}>
-          <button className="memory-game-button">Memory cards</button>
-        </Link>
-        <Link to={"#"}>
-          <button className="differents-game-button">
-            Which is different?
-          </button>
-        </Link>
-      </div>
+      {user.isLoggedIn ? (
+        <div className="games-buttons">
+          <Link to={"/memorygame"}>
+            <button className="memory-game-button">Memory cards</button>
+          </Link>
+        </div>
+      ) : (
+        <div style={{ height: "500px", display: "flex", alignItems: "center" }}>
+          {" "}
+          <LoginButton />
+        </div>
+      )}
     </div>
   );
 }

@@ -2,8 +2,13 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Nav.css";
 import { FaUserPlus } from "react-icons/fa";
+import { useUsers } from "../../context/UserProvider";
+import { CiLogout } from "react-icons/ci";
+import UserProps from "../MUI/UserProps";
 
 export default function Nav() {
+  const { user, logout } = useUsers();
+
   return (
     <div className="nav">
       <div className="nav-container">
@@ -93,17 +98,25 @@ export default function Nav() {
           </ul>
         </div>
         <div className="nav-buttons">
-          <Link to="/loginpage">
-            <button
-              style={{
-                border: "none",
-                backgroundColor: "transparent",
-                cursor: "pointer",
-              }}
-            >
-              <FaUserPlus style={{ fontSize: "35px" }} />
-            </button>
-          </Link>
+          {user.isLoggedIn ? (
+            <div className="logout">
+              <div className="user-pic">
+                <UserProps user={user} logout={logout} />
+              </div>
+            </div>
+          ) : (
+            <Link to="/loginpage">
+              <button
+                style={{
+                  border: "none",
+                  backgroundColor: "transparent",
+                  cursor: "pointer",
+                }}
+              >
+                <FaUserPlus style={{ fontSize: "35px" }} />
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

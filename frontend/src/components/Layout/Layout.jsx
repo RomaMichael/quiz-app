@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useUsers } from "../../context/UserProvider";
 
 import Pages from "../../pages/Pages";
 import Games from "../Games/Games";
@@ -12,6 +13,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import SignUp from "../LoginPage/SignUp/SignUp";
 import TestsPage from "../TestsPsge/TestsPage";
 import TheTest from "../TheTest/TheTest";
+import UserProfile from "../UserProfile/UserProfile";
 import "./Layout.css";
 
 export default function Layout() {
@@ -27,6 +29,7 @@ export default function Layout() {
         <Route path="/memorygame" element={<MemoryLayout />} />
         <Route path="/loginpage" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/userprofile" element={<UserProfile />} />
       </Routes>
     </div>
   );

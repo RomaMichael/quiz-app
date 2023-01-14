@@ -2,9 +2,9 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  height: 70px;
+  height: 75px;
   align-items: center;
-  background-color: rgb(145, 253, 253);
+  background-color: #4eff2f;
 }
 .nav .nav-container {
   width: 95vw;
