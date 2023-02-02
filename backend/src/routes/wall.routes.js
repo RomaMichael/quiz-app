@@ -14,4 +14,26 @@ router.post("/create-new", async (req, res) => {
   res.json(post);
 });
 
+router.delete("/delete-post/:id", async (req, res) => {
+  try {
+    const deleted = await Wall.findByIdAndDelete(req.params.id);
+    res.json(deleted);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.put("/update-post/:id", async (req, res) => {
+  console.log(req.body);
+  try {
+    const updated = await Wall.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+
+    res.json(updated);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

@@ -16,23 +16,15 @@
     a {
       text-decoration: none;
 
-      .memory-game-button {
-        background-color: rgb(20, 253, 20);
-        border-radius: 30px;
-        width: 300px;
-        height: 50px;
-        font-size: 20px;
-        font-family: 700;
-        text-transform: uppercase;
-      }
-      .differents-game-button {
-        background-color: rgb(20, 195, 253);
-        border-radius: 30px;
-        width: 300px;
-        height: 50px;
-        font-size: 20px;
-        font-family: 700;
-        text-transform: uppercase;
+      .memory-game {
+        width: 400px;
+        height: 200px;
+        border-radius: 10px;
+        &:hover {
+          box-shadow: 7px 7px 0px 0px;
+          color: black;
+          transition: 0.5s;
+        }
       }
     }
   }

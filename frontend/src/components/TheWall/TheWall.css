@@ -1,3 +1,15 @@
 .the-wall {
   min-height: 600px;
+}
+.the-wall .the-wall-container {
+  display: flex;
+  justify-content: space-between;
+}
+.the-wall .the-wall-container .mainpage-main .wall-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+  top: 50px;
 }/*# sourceMappingURL=TheWall.css.map */

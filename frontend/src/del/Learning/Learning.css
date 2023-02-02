@@ -6,6 +6,7 @@
   min-height: 800px;
   display: flex;
   justify-content: center;
+  margin-top: 60px;
 }
 .learning .learning-container {
   width: 90vw;
@@ -13,18 +14,21 @@
   flex-direction: column;
   align-items: center;
 }
-.learning .learning-container .buttons-header {
+.learning .learning-container .header {
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+}
+.learning .learning-container .header .buttons-header {
   display: flex;
   justify-content: flex-start;
   width: 90vw;
 }
-.learning .learning-container .buttons-header .choose-state {
+.learning .learning-container .header .buttons-header .choose-state {
   width: 250px;
   height: 70px;
   display: flex;
   justify-content: space-between;
 }
-.learning .learning-container .buttons-header .choose-state button {
+.learning .learning-container .header .buttons-header .choose-state button {
   border: none;
   border-radius: 8px;
   height: 30px;

@@ -24,7 +24,7 @@ export default function TheTest() {
 
   const smileArray = [
     {
-      url: "https://www.svgrepo.com/show/209064/happy-emoji.svg",
+      url: "https://purepng.com/public/uploads/large/purepng.com-golden-cupgolden-cupgoldtrophymedal-1421526534777l4uw5.png",
     },
     {
       url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mr._Smiley_Face.svg/1200px-Mr._Smiley_Face.svg.png",
@@ -59,7 +59,7 @@ export default function TheTest() {
         }
       }
     }, 1000);
-  }, []);
+  }, [timer, runTimer]);
 
   const back = () => {
     navigate("/testspage", { replace: true });
@@ -188,7 +188,7 @@ export default function TheTest() {
                           name="answers"
                           value={answer}
                           checked={false}
-                          onClick={(e) => ans(e.target.value)}
+                          onChange={(e) => ans(e.target.value)}
                         />
                       </label>
                     </div>

@@ -44,8 +44,9 @@ const theme = createTheme();
 export default function SignUp() {
   const [createdUser, setCreatedUser] = useState({
     _id: uuid4(),
-    results: [],
     myContent: [],
+    likedPosts: [],
+    testsScore: 0,
   });
 
   const { login } = useUsers();

@@ -4,6 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link, useNavigate } from "react-router-dom";
 import { red } from "@mui/material/colors";
+import { useUsers } from "../../context/UserProvider";
 export default function UserProps({ user, logout }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -29,15 +30,14 @@ export default function UserProps({ user, logout }) {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
         style={{
-          width: "60px",
-          height: "60px",
+          width: "50px",
+          height: "50px",
 
           backgroundImage: `url(${user.avatar.url})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          borderRadius: "100px",
-          border: "1px solid red",
+          borderRadius: "10px",
         }}
       ></Button>
       <Menu
@@ -50,7 +50,7 @@ export default function UserProps({ user, logout }) {
         }}
       >
         <Link
-          to="/userprofile"
+          to={`/${user._id}`}
           style={{ textDecoration: "none", color: "black" }}
         >
           <MenuItem onClick={handleClose}>Profile</MenuItem>

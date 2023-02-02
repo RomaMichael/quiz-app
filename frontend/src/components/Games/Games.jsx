@@ -12,7 +12,11 @@ export default function Games() {
       {user.isLoggedIn ? (
         <div className="games-buttons">
           <Link to={"/memorygame"}>
-            <button className="memory-game-button">Memory cards</button>
+            <img
+              src="https://tse1.mm.bing.net/th?id=OIP.IK1AvnxCTWUS5NLmoM-90AHaEK&pid=Api&P=0"
+              alt=""
+              className="memory-game"
+            />
           </Link>
         </div>
       ) : (

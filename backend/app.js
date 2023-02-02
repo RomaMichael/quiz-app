@@ -11,6 +11,9 @@ const memoryCardsRouter = require("./src/routes/memorycards.routes");
 const learningRouter = require("./src/routes/learning.routes");
 const usersRouter = require("./src/routes/users.routes");
 const wallRouter = require("./src/routes/wall.routes");
+const notificationsRouter = require("./src/routes/notifications.routes");
+const resultsRouter = require("./src/routes/resultstest.routes");
+const gamesResultsRouter = require("./src/routes/gamesResults.routes");
 const sessionConfig = require("./src/config/session.config");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -45,6 +48,9 @@ app.use("/learning", learningRouter);
 app.use("/memorycards", memoryCardsRouter);
 app.use("/users", usersRouter);
 app.use("/wall", wallRouter);
+app.use("/notifications", notificationsRouter);
+app.use("/resultstest", resultsRouter);
+app.use("/gamesresults", gamesResultsRouter);
 
 mongoose.connection.once("open", () => {
   console.log(`MongoDB is connected`);

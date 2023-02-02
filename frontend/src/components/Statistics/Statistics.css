@@ -1,0 +1,32 @@
+.statistics {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.statistics .statistics-container {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+}
+.statistics .statistics-container .filters label {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  justify-content: space-between;
+}
+.statistics .statistics-container .filters label select {
+  width: 70px;
+}
+.statistics .statistics-container .filters .find-stats {
+  width: 60px;
+  height: 30px;
+}
+.statistics .statistics-container .statistics-information {
+  width: 500px;
+}
+.statistics .statistics-container .statistics-information .graph-buttons button {
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+}/*# sourceMappingURL=Statistics.css.map */

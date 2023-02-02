@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { useUsers } from "../../../context/UserProvider";
+import { useResultsTest } from "../../../context/ResultsTestProvider";
 
 export default function TestResults({
   messageEnd,
@@ -9,10 +11,13 @@ export default function TestResults({
   score,
   smiley,
 }) {
+  const { updateTestResults } = useResultsTest();
   const [testResult, setTestResult] = useState({});
 
-  const { updateUser, setUser, user } = useUsers();
-  console.log(user);
+  const { user } = useUsers();
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     let percent = (score / currentTest.length) * 100;
     let newResult = {
@@ -20,32 +25,47 @@ export default function TestResults({
       testLevel: currentTest[0].level,
       result: score,
       resultPercent: percent,
+      userId: user._id,
     };
-    const updaedUser = { ...user, results: [...user.results, newResult] };
-    console.log(updaedUser);
-    setTestResult(newResult);
-    setUser(updaedUser);
+
+    // setTestResult(newResult);
+    updateTestResults(newResult);
   }, []);
-  updateUser(user);
-  console.log(testResult);
+
+  console.log("test ended");
+  const toStartTest = () => {
+    navigate("/testspage", { new: true });
+  };
+
   return (
-    <div
-      className="end-test"
-      style={{ display: "flex", flexDirection: "column" }}
-    >
+    <div>
       {" "}
-      <div className="end-test-title">
-        <h1 style={{ fontSize: "45px", fontFamily: "cursive" }}>The end!</h1>
-        <h2 style={{ fontFamily: "cursive" }}>{messageEnd}</h2>
-        <img
-          src={smiley.url}
-          alt="pic"
-          style={{ width: "200px", height: "200px" }}
+      <div
+        className="back-to-tests"
+        style={{ display: "flex", justifyContent: "flex-start", width: "80vw" }}
+      >
+        <BsFillArrowLeftCircleFill
+          style={{ fontSize: "30px" }}
+          onClick={toStartTest}
         />
       </div>
-      <h3 style={{ fontFamily: "cursive" }}>
-        You answered correct {score}/{currentTest.length} times
-      </h3>
+      <div
+        className="end-test"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
+        <div className="end-test-title">
+          <h1 style={{ fontSize: "45px", fontFamily: "cursive" }}>The end!</h1>
+          <h2 style={{ fontFamily: "cursive" }}>{messageEnd}</h2>
+          <img
+            src={smiley.url}
+            alt="pic"
+            style={{ width: "200px", height: "200px" }}
+          />
+        </div>
+        <h3 style={{ fontFamily: "cursive" }}>
+          You answered correct {score}/{currentTest.length} times
+        </h3>
+      </div>
     </div>
   );
 }

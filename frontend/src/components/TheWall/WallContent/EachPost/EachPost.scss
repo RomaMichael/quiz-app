@@ -1,0 +1,12 @@
+.post-body {
+  background-color: white;
+  box-shadow: 6px 6px 6px grey;
+  width: 40vw;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}

@@ -1,0 +1,35 @@
+.mainPage-right {
+  width: 30vw;
+
+  position: fixed;
+  right: 0px;
+  z-index: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .mainPage-right-container {
+    position: relative;
+    top: 60px;
+  }
+  .best-user {
+    background-color: rgb(48, 223, 250);
+    width: 190px;
+    border-radius: 10px;
+
+    img {
+      width: 190px;
+      height: 190px;
+    }
+  }
+  .best-memory-player {
+    background-color: rgb(48, 223, 250);
+    width: 190px;
+    border-radius: 10px;
+    img {
+      width: 190px;
+      height: 190px;
+    }
+  }
+}

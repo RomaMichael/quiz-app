@@ -21,7 +21,6 @@ export default function Randoms() {
 
     setLearningData(filtered);
   }, [categoryRandom]);
-  console.log(learningData[randomNum]);
 
   const nextPicture = () => {
     if (randomNum === learningData.length - 1) {

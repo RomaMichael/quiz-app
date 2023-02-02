@@ -30,7 +30,7 @@ const registerUser = async (user, file) => {
 
 const updateUser = async (id, user) => {
   try {
-    const updated = await User.findByIdAndUpdate(id, user, { new: true });
+    await User.findByIdAndUpdate(id, user, { new: true });
   } catch (error) {
     console.log(error);
   }

@@ -6,6 +6,7 @@ import "./Home.css";
 import LoginButton from "../buttons/LoginButton";
 import { useUsers } from "../../context/UserProvider";
 import TheWall from "../TheWall/TheWall";
+import LoginPage from "../LoginPage/LoginPage";
 export default function Home() {
   const { user } = useUsers();
   return (
@@ -15,12 +16,7 @@ export default function Home() {
           <TheWall />
         ) : (
           <div className="login-to-the-app">
-            <h1>
-              Welcome to <span>Learn&Play</span>
-            </h1>
-            <h2>Want to play and learn with us?</h2>
-            <h3>So what are you waiting for?</h3>
-            <LoginButton />
+            <LoginPage />
           </div>
         )}
       </div>

@@ -6,6 +6,7 @@ const userContext = createContext();
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState({ isLoggedIn: false });
+  const [allOfUsers, setAllOfUsers] = useState([]);
 
   const navigate = useNavigate();
 
@@ -17,15 +18,14 @@ export function UserProvider({ children }) {
     const user = await response.json();
 
     if (user.username) {
-      console.log("auth true");
       setUser({ ...user, isLoggedIn: true });
     } else {
-      console.log("auth false");
       setUser({ ...user, isLoggedIn: false });
     }
   };
   useEffect(() => {
     checkAuth();
+    allUsers();
   }, []);
 
   const login = async (credentials) => {
@@ -62,12 +62,22 @@ export function UserProvider({ children }) {
     });
   };
 
+  const allUsers = async () => {
+    const usersFromApi = await fetch("http://localhost:8006/users");
+    const fetchUsers = await usersFromApi.json();
+
+    setAllOfUsers(fetchUsers);
+  };
+
   const value = {
     user,
     setUser,
     logout,
     updateUser,
     login,
+
+    allOfUsers,
+    allUsers,
   };
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>;

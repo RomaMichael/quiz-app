@@ -1,0 +1,91 @@
+[
+  {
+    "_id": "48f43b39-2c63-47b5-8790-9e89db987e9b",
+    "username": "Michael",
+    "email": "michael2018@gmail.com",
+    "hash": "a57ea621319fba9a049aa6877c643a43a0380242551a280bff367c0c4b88a16ab9b5f099f10c1c0d62a42ce8f2fc05d56b9a3bbcac6f5dd04dbdeb3f4ad2c316",
+    "salt": "0c9ba219f903256bb0962c8081fd6aed007c78c3e2d27e10bd0b8ca3eb3be835",
+    "creationDate": "Jan 14th 23",
+    "role": "user",
+    "avatar": {
+      "url": "http://res.cloudinary.com/dwqnpqnl0/image/upload/v1673701321/avatars/70577428-fa7e-4f9b-96d9-b3f57748dde8.png",
+      "publicId": "avatars/70577428-fa7e-4f9b-96d9-b3f57748dde8"
+    },
+    "myContent": [
+      {
+        "_id": "31cf1341-c751-4d7d-8904-2392fc45cbc3",
+        "currentTime": "09:24",
+        "currentDate": "Feb 1st 23",
+        "postContent": "Hey! its my first post here",
+        "postAuthor": {
+          "username": "Michael",
+          "avatar": "http://res.cloudinary.com/dwqnpqnl0/image/upload/v1673701321/avatars/70577428-fa7e-4f9b-96d9-b3f57748dde8.png",
+          "_id": "48f43b39-2c63-47b5-8790-9e89db987e9b"
+        },
+        "likes": []
+      }
+    ],
+    "likedPosts": [
+      {
+        "_id": "943ab1cc-920c-45fb-997c-549fcb9647c0",
+        "postContent": "aaa",
+        "postAuthor": {
+          "username": "Roma",
+          "avatar": "http://res.cloudinary.com/dwqnpqnl0/image/upload/v1673696940/avatars/24b23135-5f3e-4d75-b733-94a509e4ee33.jpg",
+          "_id": "78443646-694e-4bb1-bcd7-601918a9b7e2"
+        },
+        "currentTime": "13:32",
+        "currentDate": "Jan 31st 23",
+        "likes": [],
+        "__v": 0
+      }
+    ]
+  },
+
+  {
+    "_id": "b44f7cdd-5d3a-4867-a6e4-b93362825976",
+    "username": "Joy",
+    "email": "joy@gmail.com",
+    "hash": "a8b5e01a2b84a30c66877a8d3c8abe19071713cde227cc1773ba8a4bd89910f3ee4146cca8c3440258718d1f12c922160680ea59efb0d1404a84ad423379ef59",
+    "salt": "8738f46af25d761f554cdf57c9d8dce3c29bdacbb03eb978ea0c67f45639133f",
+    "creationDate": "Jan 22nd 23",
+    "role": "user",
+    "avatar": {
+      "url": "http://res.cloudinary.com/dwqnpqnl0/image/upload/v1674415132/avatars/bb835f46-a065-44b9-9628-f447477a36ad.jpg",
+      "publicId": "avatars/bb835f46-a065-44b9-9628-f447477a36ad"
+    },
+    "myContent": [],
+    "likedPosts": [],
+
+    "gamesResults": []
+  },
+
+  {
+    "_id": "78443646-694e-4bb1-bcd7-601918a9b7e2",
+    "username": "Roma",
+    "email": "romab1990@gmail.com",
+    "hash": "82d903a1b73237be7df7652e4a9884bbafcb50d30895cf0b51b727d0456c79d1aaa50943395e92d08aa6fb46130c388d58f1774624ab15d8931380c493e50da4",
+    "salt": "9089f24b654427950b2d5f7871ba2cea7064b18834bd8d2a71d7c527ac6ac0c4",
+    "creationDate": "Jan 14th 23",
+    "role": "admin",
+    "avatar": {
+      "url": "http://res.cloudinary.com/dwqnpqnl0/image/upload/v1673696940/avatars/24b23135-5f3e-4d75-b733-94a509e4ee33.jpg",
+      "publicId": "avatars/24b23135-5f3e-4d75-b733-94a509e4ee33"
+    },
+    "myContent": [
+      {
+        "_id": "943ab1cc-920c-45fb-997c-549fcb9647c0",
+        "currentTime": "13:32",
+        "currentDate": "Jan 31st 23",
+        "postContent": "aaa",
+        "postAuthor": {
+          "username": "Roma",
+          "avatar": "http://res.cloudinary.com/dwqnpqnl0/image/upload/v1673696940/avatars/24b23135-5f3e-4d75-b733-94a509e4ee33.jpg",
+          "_id": "78443646-694e-4bb1-bcd7-601918a9b7e2"
+        },
+        "likes": []
+      }
+    ],
+    "likedPosts": []
+  }
+]

@@ -10,8 +10,6 @@ export default function Learning() {
   const [learningState, setLearningState] = useState("random");
   const [data, setData] = useState([]);
 
-  console.log(learningState);
-
   const setRandom = () => {
     setLearningState("random");
   };
@@ -23,7 +21,7 @@ export default function Learning() {
     <div className="learning">
       <div className="learning-container">
         <div className="header">
-          <h1>Learning</h1>
+          <h1>Welcome to learning section</h1>
           <div className="buttons-header">
             <div className="choose-state">
               <button onClick={setRandom}>Randoms</button>

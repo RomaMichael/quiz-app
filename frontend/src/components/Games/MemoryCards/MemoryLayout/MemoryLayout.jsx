@@ -19,11 +19,6 @@ export default function MemoryLayout() {
   );
   const [chars, setChars] = useState(false);
 
-  // useEffect(() => {
-  //   animals = cards.filter((card) => card.type === "animals")
-  //   cartoons = cards.filter((card) => card.type === "cartoons")
-  // },[]);
-  console.log(animals);
   return (
     <div className="memoryLayout">
       {cards ? (

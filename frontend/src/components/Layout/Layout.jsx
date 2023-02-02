@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useUsers } from "../../context/UserProvider";
 
 import Pages from "../../pages/Pages";
 import Games from "../Games/Games";
@@ -8,9 +7,9 @@ import MemoryLayout from "../Games/MemoryCards/MemoryLayout/MemoryLayout";
 
 import Home from "../Home/Home";
 
-import Learning from "../Learning/Learning";
 import LoginPage from "../LoginPage/LoginPage";
 import SignUp from "../LoginPage/SignUp/SignUp";
+import Statistics from "../Statistics/Statistics";
 import TestsPage from "../TestsPsge/TestsPage";
 import TheTest from "../TheTest/TheTest";
 import UserProfile from "../UserProfile/UserProfile";
@@ -23,13 +22,13 @@ export default function Layout() {
         <Route path="/" element={<Home />} />
         <Route path="/testspage" element={<TestsPage />} />
         <Route path="/thetest" element={<TheTest />} />
-        <Route path="/learning" element={<Learning />} />
-        <Route path="/learning/:id" element={<Pages />} />
-        <Route path="/games" element={<Games />}></Route>
+
+        <Route path="/games" element={<Games />} />
         <Route path="/memorygame" element={<MemoryLayout />} />
         <Route path="/loginpage" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/:id" element={<UserProfile />} />
+        <Route path="statistics" element={<Statistics />} />
       </Routes>
     </div>
   );

@@ -1,9 +1,5 @@
 .home {
-  background-image: url("https://img.freepik.com/free-photo/abstract-textured-backgound_1258-30480.jpg?w=2000");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: 600px;
+  background-color: #f0f2f5;
 }
 .home .home-container {
   display: flex;

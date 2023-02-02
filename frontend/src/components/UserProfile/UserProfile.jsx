@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
+import { useParams } from "react-router-dom";
 import { useUsers } from "../../context/UserProvider";
+import EachPost from "../TheWall/WallContent/EachPost/EachPost";
 
 import "./UserProfile.css";
 
 export default function UserProfile() {
-  const { user } = useUsers();
+  const { user, allOfUsers, allUsers } = useUsers();
 
-  const myPosts = user.myContent;
-  console.log(myPosts);
+  useEffect(() => {
+    allUsers();
+  }, []);
 
-  const like = () => {};
+  const { id } = useParams();
+
+  const currentUser = allOfUsers.find((user) => user._id === id);
+  console.log(currentUser);
+
+  const myPosts = currentUser.myContent.reverse();
+
   return (
     <div className="user-profile">
       <div className="user-profile-container">
         <div className="user-profile-title">
-          <img src={user.avatar.url} alt={user.username} />
-          <h1>Welcome to your profile, {user.username}!</h1>
+          <img src={currentUser.avatar.url} alt={currentUser.username} />
+          <h1>Welcome to your profile, {currentUser.username}!</h1>
         </div>
         <div
           className="my-wall"
@@ -33,82 +42,13 @@ export default function UserProfile() {
           }}
         >
           {myPosts.length > 0 ? (
-            <div>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
               {" "}
               {myPosts.map((post, i) => (
                 <div key={post._id}>
-                  <div
-                    className="post-body"
-                    style={{
-                      backgroundColor: "white",
-                      width: "400px",
-                      minHeight: "200px",
-                      borderRadius: "30px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-
-                      padding: "5px",
-                    }}
-                  >
-                    <div
-                      className="post-title"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
-                      <div
-                        className="user-properties"
-                        style={{ display: "flex", gap: "10px" }}
-                      >
-                        <img
-                          src={post.user.avatar.url}
-                          alt="avatar"
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            borderRadius: "50px",
-                          }}
-                        />
-                        <h4>{post.user.username}</h4>
-                      </div>
-                      <div
-                        className="time-and-date"
-                        style={{ display: "flex", width: "150px", gap: "15px" }}
-                      >
-                        <p>{post.currentDate}</p>
-                        <p style={{ fontWeight: "700" }}>{post.currentTime}</p>
-                      </div>
-                    </div>
-                    <div
-                      className="message"
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-start",
-                        width: "80%",
-                        padding: "15px",
-                      }}
-                    >
-                      {post.postContent}
-                    </div>
-                    <div
-                      className="post-buttons"
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      {/* <button>Comment</button> */}
-                      <button
-                        onClick={like}
-                        style={{
-                          backgroundColor: "transparent",
-                          border: "none",
-                        }}
-                      >
-                        {<AiOutlineLike style={{ fontSize: "25px" }} />}
-                      </button>
-                    </div>
-                  </div>
+                  <EachPost post={post} />
                 </div>
               ))}{" "}
             </div>
@@ -118,3 +58,76 @@ export default function UserProfile() {
     </div>
   );
 }
+
+// <div
+//                     className="post-body"
+//                     style={{
+//                       backgroundColor: "white",
+//                       width: "400px",
+//                       minHeight: "200px",
+//                       borderRadius: "30px",
+//                       display: "flex",
+//                       flexDirection: "column",
+//                       justifyContent: "space-between",
+
+//                       padding: "5px",
+//                     }}
+//                   >
+//                     <div
+//                       className="post-title"
+//                       style={{
+//                         display: "flex",
+//                         justifyContent: "space-between",
+//                         alignItems: "center",
+//                       }}
+//                     >
+//                       <div
+//                         className="user-properties"
+//                         style={{ display: "flex", gap: "10px" }}
+//                       >
+//                         <img
+//                           src={user.avatar.url}
+//                           alt="avatar"
+//                           style={{
+//                             width: "50px",
+//                             height: "50px",
+//                             borderRadius: "50px",
+//                           }}
+//                         />
+//                         <h4>{user.username}</h4>
+//                       </div>
+//                       <div
+//                         className="time-and-date"
+//                         style={{ display: "flex", width: "150px", gap: "15px" }}
+//                       >
+//                         <p>{post.currentDate}</p>
+//                         <p style={{ fontWeight: "700" }}>{post.currentTime}</p>
+//                       </div>
+//                     </div>
+//                     <div
+//                       className="message"
+//                       style={{
+//                         display: "flex",
+//                         justifyContent: "space-start",
+//                         width: "80%",
+//                         padding: "15px",
+//                       }}
+//                     >
+//                       {post.postContent}
+//                     </div>
+//                     <div
+//                       className="post-buttons"
+//                       style={{ display: "flex", justifyContent: "flex-end" }}
+//                     >
+//                       {/* <button>Comment</button> */}
+//                       <button
+//                         onClick={like}
+//                         style={{
+//                           backgroundColor: "transparent",
+//                           border: "none",
+//                         }}
+//                       >
+//                         {<AiOutlineLike style={{ fontSize: "25px" }} />}
+//                       </button>
+//                     </div>
+//                   </div>

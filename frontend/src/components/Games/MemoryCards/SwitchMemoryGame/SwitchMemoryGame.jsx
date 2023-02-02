@@ -27,7 +27,6 @@ export default function SwitchMemoryGame({
 
       const currrentCharacter = cards[i].name;
       const findCard = cards.filter((card) => card.name === currrentCharacter);
-      console.log(findCard);
 
       const currentIndex = showCards.findIndex(
         (card) => card.name === cards[i].name
@@ -40,7 +39,6 @@ export default function SwitchMemoryGame({
         setCards((prev) =>
           prev.map((card) => {
             if (card.id === findCard[0].id) {
-              console.log(card.name);
               return { ...card, picked: true };
             } else {
               return card;
@@ -52,8 +50,8 @@ export default function SwitchMemoryGame({
       }
     }
     if (pickedCards === 9) {
-      setTimeout(() => setSwitcher(true), 1000);
-
+      // setTimeout(() => , 500);
+      setSwitcher(true);
       return;
     }
   };
@@ -77,7 +75,12 @@ export default function SwitchMemoryGame({
         <div className="switchmemorygame-container">
           <div
             className="button-back"
-            style={{ display: "flex", jusifyContent: "flex-start" }}
+            style={{
+              display: "flex",
+              jusifyContent: "flex-start",
+              position: "relative",
+              top: "40px",
+            }}
           >
             <button
               onClick={() => setChars(false)}

@@ -5,8 +5,9 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { BsFillPenFill } from "react-icons/bs";
+import UpdatePost from "./UpdatePost";
 
-export default function UserPostMenu({ delPost }) {
+export default function UserPostMenu({ deletePost, post, redactPost }) {
   return (
     <PopupState variant="popover" popupId="demo-popup-popover">
       {(popupState) => (
@@ -35,12 +36,13 @@ export default function UserPostMenu({ delPost }) {
                 alignItems: "center",
                 width: "258px",
                 justifyContent: "space-between",
+                cursor: "pointer",
               }}
             >
               <p>Delete post</p>
               <AiFillDelete
                 style={{ fontSize: "20px", color: "red" }}
-                onClick={delPost}
+                onClick={() => deletePost(post)}
               />
             </div>
             <div
@@ -50,13 +52,11 @@ export default function UserPostMenu({ delPost }) {
                 alignItems: "center",
                 width: "258px",
                 justifyContent: "space-between",
+                cursor: "pointer",
               }}
             >
               <p>Update post</p>
-              <BsFillPenFill
-                style={{ fontSize: "20px", color: "green" }}
-                onClick={delPost}
-              />
+              <UpdatePost redactPost={redactPost} />
             </div>
           </Popover>
         </div>

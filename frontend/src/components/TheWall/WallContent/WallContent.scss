@@ -1,3 +1,24 @@
-.wall-contnet {
+.wallContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
   min-height: 600px;
+
+  width: 40vw;
+  position: relative;
+  right: 50px;
+  .post-send-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 150px;
+  }
 }

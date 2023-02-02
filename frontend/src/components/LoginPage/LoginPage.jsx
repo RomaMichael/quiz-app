@@ -45,7 +45,6 @@ export default function LoginPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     login(credentials);
-    console.log(user);
   };
 
   useEffect(() => {

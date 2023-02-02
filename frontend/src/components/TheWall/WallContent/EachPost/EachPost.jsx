@@ -1,34 +1,129 @@
-import React from "react";
-import { AiOutlineLike } from "react-icons/ai";
-import { AiFillLike } from "react-icons/ai";
-
+import React, { useEffect } from "react";
+import "./EachPost.css";
 import { useUsers } from "../../../../context/UserProvider";
-import UpdatePostMenu from "../../../MUI/AdminPostMenu";
+import { useWallContent } from "../../../../context/WallProvider";
+import LikesOnPost from "./LikeOnPost/LikesOnPost";
+import ModifyPostMenu from "../../../MUI/ModifyPostMenu";
 import UserPostMenu from "../../../MUI/UserPostMenu";
-
+import { useTimeAndDate } from "../../../../context/TimeAndDateProvider";
+import { Link } from "react-router-dom";
+import { uuid4 } from "uuid4";
+import { useNotifications } from "../../../../context/NotificationsProvider";
 export default function EachPost({ post }) {
-  const { user } = useUsers();
+  const { user, updateUser, setUser, allOfUsers } = useUsers();
+  const { delPost, setWallContent, wallContent, updatePost, likeOnPost } =
+    useWallContent();
+  const { currentDate, currentTime } = useTimeAndDate();
+  const { addNotification } = useNotifications();
 
-  const postAuthor = post.user._id;
   const userId = user._id;
+  const deletePost = (deleted) => {
+    const remainWallContent = wallContent.filter(
+      (item) => item._id !== post._id
+    );
+    delPost(deleted);
+    setWallContent(remainWallContent);
 
-  const delPost = () => {
-    //  const remain = wallcontent...
+    if (user.role === "user") {
+      const remainUserContent = user.myContent.filter(
+        (item) => item._id !== post._id
+      );
+      const updatedUser = { ...user, myContent: remainUserContent };
+      updateUser(updatedUser);
+    }
+    if (user.role === "admin") {
+      const userAuthor = allOfUsers.find(
+        (user) => user._id === post.postAuthor._id
+      );
+
+      const remainUserContent = userAuthor.myContent.filter(
+        (item) => item._id !== post._id
+      );
+      const updatedUser = { ...userAuthor, myContent: remainUserContent };
+
+      updateUser(updatedUser);
+    }
   };
+  const redactPost = (e) => {
+    const updatedPost = { ...post, postContent: e };
+    console.log(updatedPost);
+    updatePost(updatedPost);
+  };
+
+  const like = (post) => {
+    const likeIndex = user.likedPosts.findIndex(
+      (like) => like._id === post._id
+    );
+
+    if (likeIndex !== -1) {
+      return;
+    }
+    if (user._id !== post.postAuthor._id) {
+      const messageToNotification = `${user.username} liked your post`;
+      const notification = {
+        _id: uuid4(),
+        senderName: user.username,
+        senderAvatar: user.avatar.url,
+        currentTime: currentTime,
+        currentDate: currentDate,
+        content: post.postContent,
+        reciever: post.postAuthor,
+        seen: false,
+        messageToNotification,
+        newNotification: true,
+      };
+      addNotification(notification);
+    }
+
+    const likedPost = {
+      ...post,
+      likes: [...post.likes, user],
+    };
+    const userLiked = {
+      ...user,
+      likedPosts: [...user.likedPosts, post],
+    };
+    console.log(user);
+    updatePost(likedPost);
+    updateUser(userLiked);
+  };
+
+  const checkLike = (post) => {
+    const index = user.likedPosts.findIndex((item) => item._id === post._id);
+
+    if (index !== -1) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const cancelLike = (postId) => {
+    console.log("cancel like");
+    const { likedPosts, ...restOfUser } = user;
+    const restOfPosts = likedPosts.filter(
+      (likedPost) => likedPost._id !== postId
+    );
+
+    const updatedUser = { ...restOfUser, likedPosts: restOfPosts };
+
+    setUser(updatedUser);
+    updateUser(updatedUser);
+
+    const rl = [user, ...post.likes];
+    const removedLike = post.likes.filter(
+      (userLiked) => userLiked._id !== user._id
+    );
+
+    const updatedPost = { ...post, likes: removedLike };
+
+    updatePost(updatedPost);
+  };
+
+  const showLikes = () => {};
+
   return (
-    <div
-      className="post-body"
-      style={{
-        backgroundColor: "white",
-        width: "400px",
-        minHeight: "200px",
-        borderRadius: "30px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: "5px",
-      }}
-    >
+    <div className="post-body">
       <div
         className="post-title"
         style={{
@@ -37,21 +132,26 @@ export default function EachPost({ post }) {
           alignItems: "center",
         }}
       >
-        <div
-          className="user-properties"
-          style={{ display: "flex", gap: "10px" }}
+        <Link
+          to={post.postAuthor._id}
+          style={{ textDecoration: "none", color: "black" }}
         >
-          <img
-            src={post.user.avatar.url}
-            alt="avatar"
-            style={{
-              width: "50px",
-              height: "50px",
-              borderRadius: "50px",
-            }}
-          />
-          <h4>{post.user.username}</h4>
-        </div>
+          <div
+            className="user-properties"
+            style={{ display: "flex", gap: "10px" }}
+          >
+            <img
+              src={post.postAuthor.avatar}
+              alt={post.postAuthor.username}
+              style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "50px",
+              }}
+            />
+            <h4>{post.postAuthor.username}</h4>
+          </div>
+        </Link>
         <div
           className="time-and-date"
           style={{
@@ -64,12 +164,20 @@ export default function EachPost({ post }) {
           <p>{post.currentDate}</p>
           <p style={{ fontWeight: "700" }}>{post.currentTime}</p>
           {user.role === "admin" ? (
-            <UpdatePostMenu delPost={delPost} />
+            <ModifyPostMenu
+              deletePost={deletePost}
+              post={post}
+              redactPost={redactPost}
+            />
           ) : (
             <div>
               {" "}
-              {postAuthor === userId ? (
-                <UserPostMenu delPost={delPost} />
+              {post.postAuthor._id === userId ? (
+                <UserPostMenu
+                  deletePost={deletePost}
+                  post={post}
+                  redactPost={redactPost}
+                />
               ) : null}
             </div>
           )}
@@ -90,9 +198,19 @@ export default function EachPost({ post }) {
         style={{ display: "flex", justifyContent: "flex-end" }}
       >
         {/* <button>Comment</button> */}
-        <button style={{ backgroundColor: "transparent", border: "none" }}>
-          {<AiOutlineLike style={{ fontSize: "25px" }} />}
-        </button>
+        <LikesOnPost
+          checkLike={checkLike}
+          post={post}
+          like={like}
+          showLikes={showLikes}
+          cancelLike={cancelLike}
+        />
+        <div>
+          {" "}
+          {post.likes.length ? (
+            <div style={{ fontWeight: "700" }}>{post.likes.length}</div>
+          ) : null}
+        </div>
       </div>
     </div>
   );
