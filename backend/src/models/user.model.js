@@ -41,6 +41,7 @@ const userSchema = new Schema({
   myContent: { type: Array, require: true },
   likedPosts: { type: Array, require: true },
   testsScore: { type: Number, require: true },
+  memoryGameRecord: { type: Number, require: true },
 });
 
 const User = mongoose.model("Users", userSchema);

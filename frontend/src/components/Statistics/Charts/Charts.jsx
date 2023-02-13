@@ -1,26 +1,22 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 import { useResultsTest } from "../../../context/ResultsTestProvider";
-import { useUsers } from "../../../context/UserProvider";
 
 export function Charts({ statSubject, statLevel, chartType }) {
   const { testResults } = useResultsTest();
-  const { user } = useUsers();
-
-  const myResults = testResults.filter((item) => item.userId === user._id);
 
   const axs = [["Try", "Score"]];
-  let stats = myResults;
+  let stats = testResults;
   console.log(stats);
   const filterStats = () => {
     if (statSubject !== "all") {
-      myResults = myResults.filter((res) => res.testType === statSubject);
+      stats = testResults.filter((res) => res.testType === statSubject);
     }
     if (statLevel !== "all") {
-      myResults = myResults.filter((res) => res.testLevel === statLevel);
+      stats = testResults.filter((res) => res.testLevel === statLevel);
     }
 
-    return myResults;
+    return stats;
   };
 
   stats = filterStats();

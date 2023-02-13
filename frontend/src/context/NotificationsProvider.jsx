@@ -15,7 +15,7 @@ export function NotificationProvider({ children }) {
   const myNotifications = notifications.filter(
     (note) => note.reciever._id === user._id
   );
-
+  console.log(myNotifications);
   useEffect(() => {
     fetchNotifications();
   }, []);
@@ -27,6 +27,7 @@ export function NotificationProvider({ children }) {
   };
 
   const addNotification = async (notification) => {
+    console.log(notification);
     await fetch("http://localHost:8006/notifications/addNew", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,7 +37,7 @@ export function NotificationProvider({ children }) {
 
   const updateNotification = async (notification) => {
     await fetch(
-      `http://localHost:8006/notifications/update-notification/:${notification._id}`,
+      `http://localHost:8006/notifications/update-notification/${notification._id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -45,6 +46,16 @@ export function NotificationProvider({ children }) {
     );
   };
 
+  // const deleteNotification = async (notification) => {
+  //   await fetch(
+  //     `http://localHost:8006/notifications/delete-notification/${notification._id}`,
+  //     {
+  //       method: "DELETE",
+  //       headers: { "Content-Type": "application/json" },
+  //     }
+  //   );
+  // };
+
   const value = {
     notifications,
     setNotifications,
@@ -52,6 +63,7 @@ export function NotificationProvider({ children }) {
     fetchNotifications,
     myNotifications,
     updateNotification,
+    // deleteNotification,
   };
 
   return (

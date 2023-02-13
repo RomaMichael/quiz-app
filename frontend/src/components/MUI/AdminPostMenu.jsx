@@ -9,7 +9,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { useUsers } from "../../context/UserProvider";
 import UpdatePost from "./UpdatePost";
 
-export default function ModifyPostMenu({ deletePost, post, redactPost }) {
+export default function AdminPostMenu({ deletePost, post, redactPost }) {
   const { user } = useUsers();
 
   const hoverStyle = {

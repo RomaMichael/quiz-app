@@ -6,6 +6,7 @@ import { Charts } from "./Charts/Charts";
 import "./Statistics.css";
 import { GiNetworkBars } from "react-icons/gi";
 import { SlGraph } from "react-icons/sl";
+import { Link } from "react-router-dom";
 
 export default function Statistics() {
   const [statSubject, setStatSubject] = useState("all");
@@ -50,10 +51,24 @@ export default function Statistics() {
               <option value="hard">Hard</option>
             </select>
           </label>
-          {/* <button className="find-stats" onClick={filterStats}>
-            Find
-          </button> */}
+          <Link to="/testsPage">
+            <button
+              style={{
+                position: "relative",
+                right: "25px",
+                top: "20px",
+                height: "40px",
+                borderRadius: "10px",
+                border: "none",
+                color: "white",
+                backgroundColor: "green",
+              }}
+            >
+              Go make some more tests
+            </button>
+          </Link>
         </div>
+
         <div className="statistics-information">
           {" "}
           <div className="graph-buttons">

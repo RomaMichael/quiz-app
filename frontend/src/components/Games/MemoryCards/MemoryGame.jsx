@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 import "./MemoryGame.css";
 import MemoryGameEnd from "./SwitchMemoryGame/MemoryGameEnd.jsx/MemoryGameEnd";
-export default function MemoryGame({ switcher, setShowCards, showCards }) {
+export default function MemoryGame({
+  switcher,
+  setShowCards,
+  showCards,
+  animals,
+  cartoons,
+  setCards,
+  setChars,
+}) {
   const [openCards, setOpenCards] = useState(0);
   const [cardsChecker, setCardsChecker] = useState(0);
   const [firstCard, setFirstCard] = useState();
@@ -11,6 +19,7 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
   const [score, setScore] = useState(0);
   const [endGame, setEndGame] = useState(false);
   const [gameResult, setGameResult] = useState();
+  const [timer, setTimer] = useState(1000);
 
   let currentCard = null;
 
@@ -24,12 +33,6 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
       compare();
     }
   }, [secondCard]);
-
-  // useEffect(() => {
-  //   if (score === 10) {
-  //
-  //   }
-  // }, [score]);
 
   const compare = () => {
     if (firstCard.name === secondCard.name) {
@@ -50,7 +53,7 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
       );
     } else {
       setTimeout(() => {
-        setCardsChecker(1);
+        setCardsChecker(0);
         setShowCards((prev) =>
           prev.map((card) => {
             if (card.id === firstCard.id || card.id === secondCard.id) {
@@ -60,7 +63,7 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
             }
           })
         );
-      }, 1000);
+      }, timer);
     }
     setFirstCard(null);
     setSecondCard(null);
@@ -68,27 +71,22 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
 
   const clickOnCard = (id, i) => {
     currentCard = showCards.find((card) => card.id === id);
-
+    setTimer(1000);
     setShowCards((prev) =>
       prev.map((card) => {
-        if (firstCard && secondCard) {
-          return { ...card, open: false };
-        }
-
         if (card.id === currentCard.id) {
           return { ...card, open: true };
         } else {
-          return { ...card };
+          return card;
         }
       })
     );
-
     if (cardsChecker === 2) {
-      setCardsChecker(1);
+      setCardsChecker(0);
       setOpenCards(1);
       setFirstCard(currentCard);
       setSecondCard(null);
-
+      setTimer(0);
       setShowCards((prevCards) =>
         prevCards.map((card) => {
           {
@@ -106,7 +104,6 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
         setOpenCards((prev) => prev + 1);
         setCardsChecker((prev) => prev + 1);
       }
-
       if (openCards === 1) {
         setSecondCard(currentCard);
         setTries((prev) => prev + 1);
@@ -115,20 +112,26 @@ export default function MemoryGame({ switcher, setShowCards, showCards }) {
       }
     }
   };
-
   const reset = () => {
     setShowCards(
       showCards.map((card) => ({ ...card, open: false, match: false }))
     );
     setOpenCards(0);
     setScore(0);
+    setTries(0);
   };
 
   return (
     <div className="memoryCard" style={{ marginTop: "40px" }}>
       {" "}
       {endGame ? (
-        <MemoryGameEnd gameResult={gameResult} />
+        <MemoryGameEnd
+          gameResult={gameResult}
+          animals={animals}
+          cartoons={cartoons}
+          setCards={setCards}
+          setChars={setChars}
+        />
       ) : (
         <div className="memoryCard-container">
           <div

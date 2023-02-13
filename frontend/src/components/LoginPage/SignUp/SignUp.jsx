@@ -47,6 +47,7 @@ export default function SignUp() {
     myContent: [],
     likedPosts: [],
     testsScore: 0,
+    memoryGameRecord: [],
   });
 
   const { login } = useUsers();

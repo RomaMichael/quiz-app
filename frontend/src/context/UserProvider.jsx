@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ export function UserProvider({ children }) {
 
   const checkAuth = async () => {
     const response = await fetch("http://localhost:8006/users/check-auth", {
-      credentials: "include",
+      credentials: "include", // sends the token with the request
     });
 
     const user = await response.json();
@@ -45,7 +45,7 @@ export function UserProvider({ children }) {
   const logout = async () => {
     const response = await fetch("http://localhost:8006/users/logout", {
       method: "POST",
-      credentials: "include",
+      credentials: "include", // makes the browser send the cookie
     });
 
     if (response.status === 200) {
@@ -54,28 +54,33 @@ export function UserProvider({ children }) {
     navigate("/", { replace: true });
   };
 
-  const updateUser = async (user) => {
+  const updateUser = useCallback(async (user) => {
     await fetch(`http://localhost:8006/users/update-user/${user._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
-  };
+    setUser(user);
+  }, []);
 
   const allUsers = async () => {
-    const usersFromApi = await fetch("http://localhost:8006/users");
-    const fetchUsers = await usersFromApi.json();
+    try {
+      const usersFromApi = await fetch("http://localhost:8006/users");
+      const fetchUsers = await usersFromApi.json();
 
-    setAllOfUsers(fetchUsers);
+      setAllOfUsers(fetchUsers);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const value = {
     user,
+    setAllOfUsers,
     setUser,
     logout,
     updateUser,
     login,
-
     allOfUsers,
     allUsers,
   };

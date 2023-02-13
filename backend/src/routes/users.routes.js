@@ -56,21 +56,20 @@ router.post("/login", passport.authenticate("local"), async (req, res) => {
 });
 
 router.put("/update-user/:id", async (req, res) => {
-  console.log(req.body);
   const user = await updateUser(req.params.id, req.body);
   res.json(user);
 });
 
-router.put("/update-user-notification/:id", async (req, res) => {
-  const user = await updateUser(req.params.id, req.body);
-  res.json(user);
-});
+// router.put("/update-user-notification/:id", async (req, res) => {
+//   const user = await updateUser(req.params.id, req.body);
+//   res.json(user);
+// });
 
-router.put("/user-gets-like/:id", async (req, res) => {
-  const user = await updateUser(req.params.id, req.body);
+// router.put("/user-gets-like/:id", async (req, res) => {
+//   const user = await updateUser(req.params.id, req.body);
 
-  res.json(user);
-});
+//   res.json(user);
+// });
 
 router.post("/logout", (req, res) => {
   console.log("logout");

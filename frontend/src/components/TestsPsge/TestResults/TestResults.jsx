@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
@@ -12,7 +12,7 @@ export default function TestResults({
   smiley,
 }) {
   const { updateTestResults } = useResultsTest();
-  const [testResult, setTestResult] = useState({});
+  const { fetchResults } = useResultsTest();
 
   const { user } = useUsers();
 
@@ -30,6 +30,7 @@ export default function TestResults({
 
     // setTestResult(newResult);
     updateTestResults(newResult);
+    fetchResults();
   }, []);
 
   console.log("test ended");

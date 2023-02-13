@@ -17,9 +17,10 @@ export default function Nav() {
         <div className="logo-container">
           <Link to={"/"}>
             <img
-              src="https://cdn.iconscout.com/icon/premium/png-256-thumb/quiz-1428698-1209568.png"
+              src="https://www.linkpicture.com/q/logo_567.png
+              "
               alt="logo"
-              style={{ width: "150px", height: "60px" }}
+              style={{ width: "140px", height: "50px" }}
             />
           </Link>
         </div>

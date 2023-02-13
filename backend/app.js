@@ -42,6 +42,18 @@ const startegy = new LocalStrategy(verifyCallback); // סטרטגיה פועל �
 passport.use(startegy); // פספורט פועל לפי סטרטגיה
 passport.serializeUser(serialize); // סריילייז לוקח את האיידי של המשתמש ושומר אותו בסיישן
 passport.deserializeUser(deserialize); // בודק את המפתח בסיישן ברענונים
+//  דסריילייז ניגש אל הסיישן ובודק את הקוקי בכל ריענון
+
+// express-session
+// jwt
+// user is logging in -> gets token
+
+// where can I store the token?
+/// cookies
+/// localStorage
+/// session storage
+
+// token is sent with each request
 
 app.use("/tests", testRouter);
 app.use("/learning", learningRouter);

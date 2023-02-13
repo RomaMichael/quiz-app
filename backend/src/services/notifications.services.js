@@ -5,7 +5,7 @@ const updateNotification = async (id, notification) => {
     const updated = await Notification.findByIdAndUpdate(id, notification, {
       new: true,
     });
-    console.log(`in function ${updated}`);
+    // console.log(`in function ${updated}`);
     return updated;
   } catch (error) {
     console.log(error);

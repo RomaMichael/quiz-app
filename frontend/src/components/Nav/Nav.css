@@ -30,10 +30,6 @@
   font-size: 18px;
   padding: 5px;
 }
-.nav .nav-container .nav-input input:-ms-input-placeholder {
-  font-size: 18px;
-  padding: 5px;
-}
 .nav .nav-container .nav-input input::placeholder {
   font-size: 18px;
   padding: 5px;
@@ -44,15 +40,6 @@
   width: 150px;
   height: 70px;
   justify-content: space-between;
-}
-
-@-webkit-keyframes navLinks {
-  0% {
-    scale: 0;
-  }
-  100% {
-    scale: 1.5;
-  }
 }
 
 @keyframes navLinks {

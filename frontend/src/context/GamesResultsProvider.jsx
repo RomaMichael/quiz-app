@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
+import { useUsers } from "./UserProvider";
 
 const gamesResultsContext = createContext();
 
@@ -10,10 +11,14 @@ export function GamesResultsProvider({ children }) {
   }, []);
 
   const fetchGamesResults = async () => {
-    const res = await fetch("http://localHost:8006/gamesresults");
-    const data = await res.json();
+    try {
+      const res = await fetch("http://localHost:8006/gamesresults");
+      const data = await res.json();
 
-    setGamesResults(data);
+      setGamesResults(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const addGameResult = async (res) => {
@@ -23,10 +28,10 @@ export function GamesResultsProvider({ children }) {
       body: JSON.stringify(res),
     });
   };
-
+  const memoryResults = gamesResults;
   const value = {
-    gamesResults,
     addGameResult,
+    memoryResults,
   };
 
   return (

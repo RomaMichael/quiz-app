@@ -1,11 +1,17 @@
 import React, { createContext, useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useUsers } from "./UserProvider";
 
 const wallContext = createContext();
 
 export function WallProvider({ children }) {
   const [wallContent, setWallContent] = useState([]);
+  const { user, updateUser } = useUsers();
+
+  const myContent = wallContent.filter(
+    (post) => post.postAuthor._id === user._id
+  );
 
   const fetchWallData = async () => {
     const response = await fetch("http://localhost:8006/wall");
@@ -14,6 +20,11 @@ export function WallProvider({ children }) {
 
     setWallContent(data);
   };
+
+  useEffect(() => {
+    const userContent = { ...user, myContent: myContent };
+    updateUser(userContent);
+  }, [wallContent]);
 
   useEffect(() => {
     fetchWallData();

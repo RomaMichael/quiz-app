@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect } from "react";
 
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";

@@ -11,12 +11,10 @@ export default function MemoryLayout() {
   const [switcher, setSwitcher] = useState(false);
 
   const [showCards, setShowCards] = useState([]);
-  const [animals, setAnimals] = useState(
-    cards.filter((card) => card.type === "animals")
-  );
-  const [cartoons, setCartoons] = useState(
-    cards.filter((card) => card.type === "cartoons")
-  );
+  const animals = cards.filter((card) => card.type === "animals");
+
+  const cartoons = cards.filter((card) => card.type === "cartoons");
+
   const [chars, setChars] = useState(false);
 
   return (
@@ -31,6 +29,10 @@ export default function MemoryLayout() {
               cards={cards}
               showCards={showCards}
               setShowCards={setShowCards}
+              animals={animals}
+              cartoons={cartoons}
+              setCards={setCards}
+              setChars={setChars}
             />
           ) : (
             <SwitchMemoryGame

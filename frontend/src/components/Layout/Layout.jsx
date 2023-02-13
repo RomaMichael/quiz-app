@@ -1,12 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
-import Pages from "../../pages/Pages";
+import PaintGame from "../Games/CanvasGame/PaintGame";
 import Games from "../Games/Games";
+import Labirynth from "../Games/Labirynth/Labirynth";
 import MemoryLayout from "../Games/MemoryCards/MemoryLayout/MemoryLayout";
-
 import Home from "../Home/Home";
-
 import LoginPage from "../LoginPage/LoginPage";
 import SignUp from "../LoginPage/SignUp/SignUp";
 import Statistics from "../Statistics/Statistics";
@@ -28,7 +26,8 @@ export default function Layout() {
         <Route path="/loginpage" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/:id" element={<UserProfile />} />
-        <Route path="statistics" element={<Statistics />} />
+        <Route path="/statistics" element={<Statistics />} />
+        <Route path="/paintgame" element={<PaintGame />} />
       </Routes>
     </div>
   );

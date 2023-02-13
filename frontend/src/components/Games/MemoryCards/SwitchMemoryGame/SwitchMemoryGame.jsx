@@ -50,7 +50,6 @@ export default function SwitchMemoryGame({
       }
     }
     if (pickedCards === 9) {
-      // setTimeout(() => , 500);
       setSwitcher(true);
       return;
     }

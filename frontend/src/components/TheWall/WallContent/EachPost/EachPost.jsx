@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./EachPost.css";
 import { useUsers } from "../../../../context/UserProvider";
 import { useWallContent } from "../../../../context/WallProvider";
 import LikesOnPost from "./LikeOnPost/LikesOnPost";
-import ModifyPostMenu from "../../../MUI/ModifyPostMenu";
+import AdminPostMenu from "../../../MUI/AdminPostMenu";
 import UserPostMenu from "../../../MUI/UserPostMenu";
 import { useTimeAndDate } from "../../../../context/TimeAndDateProvider";
 import { Link } from "react-router-dom";
 import { uuid4 } from "uuid4";
 import { useNotifications } from "../../../../context/NotificationsProvider";
+
 export default function EachPost({ post }) {
-  const { user, updateUser, setUser, allOfUsers } = useUsers();
-  const { delPost, setWallContent, wallContent, updatePost, likeOnPost } =
-    useWallContent();
+  const { user, updateUser, allOfUsers } = useUsers();
+  const { delPost, setWallContent, wallContent, updatePost } = useWallContent();
   const { currentDate, currentTime } = useTimeAndDate();
   const { addNotification } = useNotifications();
 
@@ -83,7 +83,7 @@ export default function EachPost({ post }) {
       ...user,
       likedPosts: [...user.likedPosts, post],
     };
-    console.log(user);
+
     updatePost(likedPost);
     updateUser(userLiked);
   };
@@ -99,7 +99,6 @@ export default function EachPost({ post }) {
   };
 
   const cancelLike = (postId) => {
-    console.log("cancel like");
     const { likedPosts, ...restOfUser } = user;
     const restOfPosts = likedPosts.filter(
       (likedPost) => likedPost._id !== postId
@@ -107,10 +106,8 @@ export default function EachPost({ post }) {
 
     const updatedUser = { ...restOfUser, likedPosts: restOfPosts };
 
-    setUser(updatedUser);
     updateUser(updatedUser);
 
-    const rl = [user, ...post.likes];
     const removedLike = post.likes.filter(
       (userLiked) => userLiked._id !== user._id
     );
@@ -133,7 +130,7 @@ export default function EachPost({ post }) {
         }}
       >
         <Link
-          to={post.postAuthor._id}
+          to={`/${post.postAuthor._id}`}
           style={{ textDecoration: "none", color: "black" }}
         >
           <div
@@ -164,7 +161,7 @@ export default function EachPost({ post }) {
           <p>{post.currentDate}</p>
           <p style={{ fontWeight: "700" }}>{post.currentTime}</p>
           {user.role === "admin" ? (
-            <ModifyPostMenu
+            <AdminPostMenu
               deletePost={deletePost}
               post={post}
               redactPost={redactPost}
@@ -197,7 +194,6 @@ export default function EachPost({ post }) {
         className="post-buttons"
         style={{ display: "flex", justifyContent: "flex-end" }}
       >
-        {/* <button>Comment</button> */}
         <LikesOnPost
           checkLike={checkLike}
           post={post}

@@ -18,6 +18,7 @@ const verifyCallback = async (username, password, cb) => {
   return cb(null, user);
 };
 
+// creates the token
 const serialize = (user, cb) => {
   console.log("serialize");
   try {
@@ -27,6 +28,10 @@ const serialize = (user, cb) => {
   }
 };
 
+// gets the token from the request
+// decode token and get userId whenever we send
+// the cookie along with the request (credentials: include)
+// find user and give access to it
 const deserialize = async (userId, cb) => {
   console.log("deserialize");
 

@@ -12,21 +12,21 @@
   position: relative;
   top: 60px;
 }
-.mainPage-right .best-user {
-  background-color: rgb(48, 223, 250);
-  width: 190px;
+.mainPage-right .best-test-results {
+  background-color: rgb(48, 250, 240);
+  width: 200px;
   border-radius: 10px;
 }
-.mainPage-right .best-user img {
-  width: 190px;
-  height: 190px;
+.mainPage-right .best-test-results img {
+  width: 200px;
+  height: 140px;
 }
 .mainPage-right .best-memory-player {
-  background-color: rgb(48, 223, 250);
-  width: 190px;
+  background-color: rgb(109, 250, 48);
+  width: 200px;
   border-radius: 10px;
 }
 .mainPage-right .best-memory-player img {
-  width: 190px;
-  height: 190px;
+  width: 200px;
+  height: 140px;
 }/*# sourceMappingURL=MainPageRight.css.map */

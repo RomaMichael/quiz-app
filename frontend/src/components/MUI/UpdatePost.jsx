@@ -2,7 +2,7 @@ import * as React from "react";
 import Popover from "@mui/material/Popover";
 
 import { BsFillPenFill } from "react-icons/bs";
-
+import { AiOutlineArrowLeft } from "react-icons/ai";
 export default function UpdatePost({ redactPost }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [updatedValue, setUpdatedValue] = React.useState("");
@@ -38,8 +38,18 @@ export default function UpdatePost({ redactPost }) {
           horizontal: "left",
         }}
       >
-        {" "}
-        <p style={{ padding: "10px" }}>Post update</p>
+        <div
+          className="update-post-title"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <p style={{ padding: "10px" }}>Post update</p>
+          <AiOutlineArrowLeft />
+        </div>
+
         <input
           type="text"
           style={{ width: "250px", height: "30px", paddingLeft: "10px" }}

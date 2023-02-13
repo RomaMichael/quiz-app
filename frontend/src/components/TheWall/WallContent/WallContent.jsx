@@ -17,7 +17,7 @@ export default function WallContent({}) {
     username: user.username,
     avatar: user.avatar.url,
     _id: user._id,
-  }
+  };
 
   const newPost = {
     _id: uuid4(),

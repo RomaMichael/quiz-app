@@ -1,5 +1,4 @@
 const { Notification } = require("../models/notification.model");
-// const { updateNotification } = require("../services/notifications.services");
 
 const router = require("express").Router();
 
@@ -13,6 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/addNew", async (req, res) => {
+  console.log(req.body);
   try {
     const newNote = new Notification(req.body);
     await newNote.save();
@@ -24,11 +24,15 @@ router.post("/addNew", async (req, res) => {
 });
 
 router.put("/update-notification/:id", async (req, res) => {
+  console.log(` id of item: ${req.params.id}`);
+
   try {
     const updated = await Notification.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      {
+        new: true,
+      }
     );
 
     console.log(`updated: ${updated}`);

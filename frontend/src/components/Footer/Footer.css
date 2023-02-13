@@ -1,11 +1,9 @@
 .Footer {
-  height: 70px;
+  height: 50px;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: black;
   color: white;
-  position: relative;
-  z-index: 2;
 }/*# sourceMappingURL=Footer.css.map */
