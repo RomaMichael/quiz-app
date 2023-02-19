@@ -20,7 +20,6 @@ export default function Layout() {
         <Route path="/" element={<Home />} />
         <Route path="/testspage" element={<TestsPage />} />
         <Route path="/thetest" element={<TheTest />} />
-
         <Route path="/games" element={<Games />} />
         <Route path="/memorygame" element={<MemoryLayout />} />
         <Route path="/loginpage" element={<LoginPage />} />

@@ -40,16 +40,69 @@
 
       height: 70px;
       justify-content: space-between;
+      .burger-menu {
+        position: relative;
+        right: 40px;
+        display: none;
+      }
     }
   }
 }
 
-@keyframes navLinks {
-  0% {
-    scale: (0);
-  }
+@media screen and (max-width: 850px) {
+  .nav {
+    width: 100vw;
 
-  100% {
-    scale: (1.5);
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    align-items: center;
+    background-color: #d5ff2f;
+    position: fixed;
+    z-index: 1;
+
+    .nav-container {
+      width: 95vw;
+      height: 70px;
+
+      .logo-container {
+        display: flex;
+        justify-content: center;
+      }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 95vw;
+      .nav-input {
+        input {
+          width: 500px;
+          height: 40px;
+          border: none;
+          border-radius: 50px;
+          &::placeholder {
+            font-size: 18px;
+            padding: 5px;
+          }
+        }
+      }
+      .nav-buttons {
+        display: flex;
+        align-items: center;
+        width: 150px;
+
+        height: 70px;
+        justify-content: space-between;
+        .user-icons {
+          .user-pic {
+            display: none;
+          }
+        }
+        .burger-menu {
+          position: relative;
+          right: 40px;
+          display: block;
+        }
+      }
+    }
   }
-}
+} ;

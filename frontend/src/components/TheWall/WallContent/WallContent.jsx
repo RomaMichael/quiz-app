@@ -52,7 +52,7 @@ export default function WallContent({}) {
       </div>
       <div className="posts">
         {wallContent
-          .map((post) => <EachPost post={post} key={post._id} />)
+          .map(({ _id }) => <EachPost postId={_id} key={_id} />)
           .reverse()}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./EachPost.css";
 import { useUsers } from "../../../../context/UserProvider";
 import { useWallContent } from "../../../../context/WallProvider";
@@ -10,12 +10,17 @@ import { Link } from "react-router-dom";
 import { uuid4 } from "uuid4";
 import { useNotifications } from "../../../../context/NotificationsProvider";
 
-export default function EachPost({ post }) {
+export default function EachPost({ postId }) {
   const { user, updateUser, allOfUsers } = useUsers();
   const { delPost, setWallContent, wallContent, updatePost } = useWallContent();
   const { currentDate, currentTime } = useTimeAndDate();
   const { addNotification } = useNotifications();
+  const [updateState, setUpdateState] = useState(false);
 
+  const post = wallContent.find((post) => post._id === postId);
+  if (!post) {
+    return null;
+  }
   const userId = user._id;
   const deletePost = (deleted) => {
     const remainWallContent = wallContent.filter(
@@ -44,10 +49,10 @@ export default function EachPost({ post }) {
       updateUser(updatedUser);
     }
   };
-  const redactPost = (e) => {
-    const updatedPost = { ...post, postContent: e };
-    console.log(updatedPost);
+  const redactPost = (newContent) => {
+    const updatedPost = { ...post, postContent: newContent };
     updatePost(updatedPost);
+    setUpdateState(false);
   };
 
   const like = (post) => {
@@ -56,7 +61,7 @@ export default function EachPost({ post }) {
     );
 
     if (likeIndex !== -1) {
-      return;
+      return cancelLike(post._id);
     }
     if (user._id !== post.postAuthor._id) {
       const messageToNotification = `${user.username} liked your post`;
@@ -88,9 +93,13 @@ export default function EachPost({ post }) {
     updateUser(userLiked);
   };
 
-  const checkLike = (post) => {
-    const index = user.likedPosts.findIndex((item) => item._id === post._id);
-
+  const checkLike = (postId) => {
+    if (!user || !user.likedPosts) {
+      console.log("if (!user || !user.likedPost) {");
+      return false;
+    }
+    const index = user.likedPosts.findIndex((item) => item._id === postId);
+    console.log(index);
     if (index !== -1) {
       return false;
     } else {
@@ -105,19 +114,14 @@ export default function EachPost({ post }) {
     );
 
     const updatedUser = { ...restOfUser, likedPosts: restOfPosts };
-
     updateUser(updatedUser);
 
-    const removedLike = post.likes.filter(
-      (userLiked) => userLiked._id !== user._id
-    );
+    const removedLike = post.likes.filter((post) => post._id !== user._id);
 
     const updatedPost = { ...post, likes: removedLike };
 
     updatePost(updatedPost);
   };
-
-  const showLikes = () => {};
 
   return (
     <div className="post-body">
@@ -165,6 +169,8 @@ export default function EachPost({ post }) {
               deletePost={deletePost}
               post={post}
               redactPost={redactPost}
+              updateState={updateState}
+              setUpdateState={setUpdateState}
             />
           ) : (
             <div>
@@ -174,6 +180,8 @@ export default function EachPost({ post }) {
                   deletePost={deletePost}
                   post={post}
                   redactPost={redactPost}
+                  updateState={updateState}
+                  setUpdateState={setUpdateState}
                 />
               ) : null}
             </div>
@@ -194,15 +202,8 @@ export default function EachPost({ post }) {
         className="post-buttons"
         style={{ display: "flex", justifyContent: "flex-end" }}
       >
-        <LikesOnPost
-          checkLike={checkLike}
-          post={post}
-          like={like}
-          showLikes={showLikes}
-          cancelLike={cancelLike}
-        />
+        <LikesOnPost isLiked={checkLike(post._id)} post={post} like={like} />
         <div>
-          {" "}
           {post.likes.length ? (
             <div style={{ fontWeight: "700" }}>{post.likes.length}</div>
           ) : null}

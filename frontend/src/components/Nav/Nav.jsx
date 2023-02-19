@@ -7,6 +7,7 @@ import { useUsers } from "../../context/UserProvider";
 import UserProps from "../MUI/UserProps";
 
 import Notifications from "../MUI/Notifications/Notifications";
+import TemporaryDrawer from "../MUI/TemporaryDrawer";
 
 export default function Nav() {
   const { user, logout } = useUsers();
@@ -24,9 +25,9 @@ export default function Nav() {
             />
           </Link>
         </div>
-        <div className="nav-input">
+        {/* <div className="nav-input">
           <input type="text" placeholder="Search for members" />
-        </div>
+        </div> */}
         <div className="nav-buttons">
           {user.isLoggedIn ? (
             <div
@@ -37,22 +38,12 @@ export default function Nav() {
               <div className="user-pic">
                 <UserProps user={user} logout={logout} />
               </div>
+              <div className="burger-menu">
+                {" "}
+                <TemporaryDrawer />
+              </div>
             </div>
-          ) : (
-            <div>
-              {/* <Link to="/loginpage">
-                <button
-                  style={{
-                    border: "none",
-                    backgroundColor: "transparent",
-                    cursor: "pointer",
-                  }}
-                >
-                  <FaUserPlus style={{ fontSize: "35px" }} />
-                </button>
-              </Link> */}
-            </div>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

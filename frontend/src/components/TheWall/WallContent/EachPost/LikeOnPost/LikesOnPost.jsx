@@ -3,13 +3,8 @@ import * as React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 
-export default function LikesOnPost({
-  checkLike,
-  post,
-  like,
-  showLikes,
-  cancelLike,
-}) {
+export default function LikesOnPost({ isLiked, post, like }) {
+  console.log({ isLiked });
   return (
     <div className="like-button">
       <button
@@ -19,25 +14,21 @@ export default function LikesOnPost({
           float: "right",
         }}
       >
-        {checkLike(post) ? (
-          <AiOutlineLike
-            style={{ fontSize: "25px" }}
-            onClick={() => like(post)}
-            onMouseOver={() => showLikes()}
-          />
-        ) : (
+        {!isLiked ? (
           <div style={{ display: "flex", alignItems: "center" }}>
-            {" "}
             <AiFillLike
               style={{
                 fontSize: "25px",
-
                 color: "blue",
               }}
-              onClick={() => cancelLike(post._id)}
-              onMouseOver={() => showLikes()}
+              onClick={() => like(post)}
             />
           </div>
+        ) : (
+          <AiOutlineLike
+            style={{ fontSize: "25px" }}
+            onClick={() => like(post)}
+          />
         )}
       </button>
     </div>

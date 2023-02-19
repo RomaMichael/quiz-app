@@ -15,9 +15,7 @@ export function WallProvider({ children }) {
 
   const fetchWallData = async () => {
     const response = await fetch("http://localhost:8006/wall");
-
     const data = await response.json();
-
     setWallContent(data);
   };
 

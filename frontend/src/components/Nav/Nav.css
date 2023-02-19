@@ -41,12 +41,62 @@
   height: 70px;
   justify-content: space-between;
 }
+.nav .nav-container .nav-buttons .burger-menu {
+  position: relative;
+  right: 40px;
+  display: none;
+}
 
-@keyframes navLinks {
-  0% {
-    scale: 0;
+@media screen and (max-width: 850px) {
+  .nav {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    align-items: center;
+    background-color: #d5ff2f;
+    position: fixed;
+    z-index: 1;
   }
-  100% {
-    scale: 1.5;
+  .nav .nav-container {
+    width: 95vw;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95vw;
+  }
+  .nav .nav-container .logo-container {
+    display: flex;
+    justify-content: center;
+  }
+  .nav .nav-container .nav-input input {
+    width: 500px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+  }
+  .nav .nav-container .nav-input input::-moz-placeholder {
+    font-size: 18px;
+    padding: 5px;
+  }
+  .nav .nav-container .nav-input input::placeholder {
+    font-size: 18px;
+    padding: 5px;
+  }
+  .nav .nav-container .nav-buttons {
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 70px;
+    justify-content: space-between;
+  }
+  .nav .nav-container .nav-buttons .user-icons .user-pic {
+    display: none;
+  }
+  .nav .nav-container .nav-buttons .burger-menu {
+    position: relative;
+    right: 40px;
+    display: block;
   }
 }/*# sourceMappingURL=Nav.css.map */

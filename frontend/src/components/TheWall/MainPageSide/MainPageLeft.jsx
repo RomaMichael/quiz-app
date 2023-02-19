@@ -3,7 +3,7 @@ import "./MainPageSide.css";
 import { Link } from "react-router-dom";
 import { useUsers } from "../../../context/UserProvider";
 
-export default function MainPageSide() {
+export default function MainPageLeft() {
   const { user } = useUsers();
   return (
     <div className="mainPageSide">
@@ -47,20 +47,6 @@ export default function MainPageSide() {
             Statistics
           </p>
         </Link>
-
-        {/* <Link to="/learning" style={{ textDecoration: "none", color: "black" }}>
-          <p
-            style={{
-              fontWeight: "700",
-              width: "150px",
-
-              display: "flex",
-              justifyContent: "flex-start",
-            }}
-          >
-            Learning
-          </p>
-        </Link> */}
 
         <Link
           to="/testspage"

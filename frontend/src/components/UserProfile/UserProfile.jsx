@@ -17,9 +17,11 @@ export default function UserProfile() {
 
   const currentUser = allOfUsers.find((user) => user._id === id);
   console.log(currentUser);
-  const myPosts = currentUser.myContent.reverse();
 
-  console.log(myPosts);
+  if (!currentUser) {
+    return <div>Loading...</div>;
+  }
+  const myPostsIds = currentUser.myContent.map((post) => post._id).reverse();
 
   return (
     <div className="user-profile">
@@ -40,14 +42,13 @@ export default function UserProfile() {
             marginBottom: "150px",
           }}
         >
-          {myPosts.length > 0 ? (
+          {myPostsIds.length > 0 ? (
             <div
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
-              {" "}
-              {myPosts.map((post, i) => (
-                <div key={post._id}>
-                  <EachPost post={post} />
+              {myPostsIds.map((postId) => (
+                <div key={postId}>
+                  <EachPost postId={postId} />
                 </div>
               ))}{" "}
             </div>

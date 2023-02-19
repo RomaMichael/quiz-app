@@ -12,7 +12,7 @@ export function UserProvider({ children }) {
 
   const checkAuth = async () => {
     const response = await fetch("http://localhost:8006/users/check-auth", {
-      credentials: "include", // sends the token with the request
+      credentials: "include",
     });
 
     const user = await response.json();
@@ -45,7 +45,7 @@ export function UserProvider({ children }) {
   const logout = async () => {
     const response = await fetch("http://localhost:8006/users/logout", {
       method: "POST",
-      credentials: "include", // makes the browser send the cookie
+      credentials: "include",
     });
 
     if (response.status === 200) {
