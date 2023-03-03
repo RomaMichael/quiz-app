@@ -5,13 +5,13 @@
   gap: 20px;
   margin-top: 100px;
   border-radius: 20px;
-  width: 40vw;
+  width: 45vw;
   height: 70px;
   background-color: white;
   padding: 5px;
 }
 .post-send img {
-  width: 4vw;
+  width: 6vw;
   height: 55px;
   border-radius: 50px;
 }
@@ -21,13 +21,13 @@
   border-radius: 15px;
   border: none;
   padding: 10px;
-  font-size: 18px;
+  font-size: 1.5vw;
 }
 .post-send input:focus {
   border: 1px solid red;
 }
 .post-send .button-active {
-  width: 6vw;
+  width: 10vw;
   height: 50px;
   border: none;
   border-radius: 15px;
@@ -39,10 +39,44 @@
   transition: 1s;
 }
 .post-send .button-non-active {
-  width: 6vw;
+  width: 10vw;
   height: 50px;
   border: none;
   border-radius: 15px;
   background-color: grey;
   color: white;
+}
+
+@media screen and (max-width: 850px) {
+  .post-send {
+    width: 60vw;
+  }
+  .post-send input {
+    font-size: 1.6vw;
+  }
+  .post-send img {
+    width: 8vw;
+    height: 55px;
+    border-radius: 50px;
+  }
+  .post-send .button-active {
+    width: 12vw;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(0, 89, 255);
+    color: white;
+  }
+  .post-send .button-active:hover {
+    background-color: blue;
+    transition: 1s;
+  }
+  .post-send .button-non-active {
+    width: 12vw;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: grey;
+    color: white;
+  }
 }/*# sourceMappingURL=PostInput.css.map */

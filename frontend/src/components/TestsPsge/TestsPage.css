@@ -1,9 +1,6 @@
 .tests-page {
   min-height: 600px;
-  background-image: url("https://s.abcnews.com/images/US/GTY_standardized_test_form_jt_150601_16x9_992.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: #a5b7fd;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,47 +38,60 @@
   background-color: rgb(6, 43, 255);
   border-radius: 8px;
 }
-.tests-page .tests-page-container .tests-section .geo-test {
+.tests-page .tests-page-container .tests-section .colors-test {
   width: 200px;
   height: 300px;
 }
-.tests-page .tests-page-container .tests-section .geo-test img {
+.tests-page .tests-page-container .tests-section .colors-test img {
   width: 200px;
   height: 170px;
 }
-.tests-page .tests-page-container .tests-section .geo-test .buttons-level-geo {
+.tests-page .tests-page-container .tests-section .colors-test .buttons-level-colors {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 10px;
   height: 120px;
 }
-.tests-page .tests-page-container .tests-section .geo-test .buttons-level-geo button {
+.tests-page .tests-page-container .tests-section .colors-test .buttons-level-colors button {
   height: 30px;
   color: white;
   font-weight: 700;
   background-color: rgb(6, 43, 255);
   border-radius: 8px;
 }
-.tests-page .tests-page-container .tests-section .music-test {
+.tests-page .tests-page-container .tests-section .animals-test {
   width: 200px;
   height: 300px;
 }
-.tests-page .tests-page-container .tests-section .music-test img {
+.tests-page .tests-page-container .tests-section .animals-test img {
   width: 200px;
   height: 170px;
 }
-.tests-page .tests-page-container .tests-section .music-test .buttons-level-music {
+.tests-page .tests-page-container .tests-section .animals-test .buttons-level-animals {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 10px;
   height: 120px;
 }
-.tests-page .tests-page-container .tests-section .music-test .buttons-level-music button {
+.tests-page .tests-page-container .tests-section .animals-test .buttons-level-animals button {
   height: 30px;
   color: white;
   font-weight: 700;
   background-color: rgb(6, 43, 255);
   border-radius: 8px;
+}
+
+@media screen and (max-width: 850px) {
+  .tests-page {
+    min-height: 1200px;
+  }
+  .tests-page .tests-page-container .tests-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 50px;
+  }
 }/*# sourceMappingURL=TestsPage.css.map */

@@ -74,6 +74,18 @@ export function UserProvider({ children }) {
     }
   };
 
+  const bestUserTotal = allOfUsers.sort((a, b) => {
+    return Number(b.testsScore) - Number(a.testsScore);
+  });
+
+  const bestTestsResult = bestUserTotal[0];
+
+  const sortPlayers = allOfUsers.sort((a, b) => {
+    return Number(a.memoryGameRecord) - Number(b.memoryGameRecord);
+  });
+
+  const bestMemoryPlayer = sortPlayers[0];
+
   const value = {
     user,
     setAllOfUsers,
@@ -81,8 +93,10 @@ export function UserProvider({ children }) {
     logout,
     updateUser,
     login,
-    allOfUsers,
+    bestTestsResult,
+    bestMemoryPlayer,
     allUsers,
+    allOfUsers,
   };
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>;

@@ -1,12 +1,12 @@
 import React from "react";
-import "./MainPageSide.css";
+import "./MainPageLeft.css";
 import { Link } from "react-router-dom";
 import { useUsers } from "../../../context/UserProvider";
 
 export default function MainPageLeft() {
   const { user } = useUsers();
   return (
-    <div className="mainPageSide">
+    <>
       <div className="mainPageSide-container">
         <Link
           to={`/${user._id}`}
@@ -79,6 +79,6 @@ export default function MainPageLeft() {
           </p>
         </Link>
       </div>
-    </div>
+    </>
   );
 }

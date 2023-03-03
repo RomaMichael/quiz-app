@@ -4,7 +4,6 @@ import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 
 export default function LikesOnPost({ isLiked, post, like }) {
-  console.log({ isLiked });
   return (
     <div className="like-button">
       <button

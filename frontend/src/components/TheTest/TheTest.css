@@ -1,9 +1,6 @@
 .the-test {
-  background-image: url("https://tse4.mm.bing.net/th?id=OIP.0Yza4haupz4RSRrNXty9wQHaF5&pid=Api&P=0");
+  background-color: #a5b7fd;
   min-height: 800px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;

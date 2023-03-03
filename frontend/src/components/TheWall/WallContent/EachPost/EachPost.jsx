@@ -95,11 +95,10 @@ export default function EachPost({ postId }) {
 
   const checkLike = (postId) => {
     if (!user || !user.likedPosts) {
-      console.log("if (!user || !user.likedPost) {");
       return false;
     }
     const index = user.likedPosts.findIndex((item) => item._id === postId);
-    console.log(index);
+
     if (index !== -1) {
       return false;
     } else {
@@ -164,29 +163,29 @@ export default function EachPost({ postId }) {
         >
           <p>{post.currentDate}</p>
           <p style={{ fontWeight: "700" }}>{post.currentTime}</p>
-          {user.role === "admin" ? (
-            <AdminPostMenu
-              deletePost={deletePost}
-              post={post}
-              redactPost={redactPost}
-              updateState={updateState}
-              setUpdateState={setUpdateState}
-            />
-          ) : (
-            <div>
-              {" "}
-              {post.postAuthor._id === userId ? (
-                <UserPostMenu
-                  deletePost={deletePost}
-                  post={post}
-                  redactPost={redactPost}
-                  updateState={updateState}
-                  setUpdateState={setUpdateState}
-                />
-              ) : null}
-            </div>
-          )}
         </div>
+        {user.role === "admin" ? (
+          <AdminPostMenu
+            deletePost={deletePost}
+            post={post}
+            redactPost={redactPost}
+            updateState={updateState}
+            setUpdateState={setUpdateState}
+          />
+        ) : (
+          <div>
+            {" "}
+            {post.postAuthor._id === userId ? (
+              <UserPostMenu
+                deletePost={deletePost}
+                post={post}
+                redactPost={redactPost}
+                updateState={updateState}
+                setUpdateState={setUpdateState}
+              />
+            ) : null}
+          </div>
+        )}
       </div>
       <div
         className="message"

@@ -13,18 +13,17 @@
   position: relative;
   top: 50px;
 }
-.the-wall .the-wall-container .mainpage-left {
-  display: block;
-  background-color: green;
-}
 
 @media screen and (max-width: 850px) {
   .the-wall {
     min-height: 600px;
+    display: flex;
   }
   .the-wall .the-wall-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
   .the-wall .the-wall-container .mainpage-main {
     display: flex;
@@ -35,6 +34,9 @@
     top: 50px;
   }
   .the-wall .the-wall-container .mainpage-left {
+    display: none;
+  }
+  .the-wall .the-wall-container .mainpage-right {
     display: none;
   }
 }/*# sourceMappingURL=TheWall.css.map */

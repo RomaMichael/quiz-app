@@ -10,19 +10,47 @@ import { useUsers } from "../../context/UserProvider";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useState } from "react";
 
-export default function AdminPostMenu({
-  deletePost,
-  post,
-  redactPost,
-  updateState,
-  setUpdateState,
-}) {
+export default function AdminPostMenu({ deletePost, post, redactPost }) {
   const { user } = useUsers();
-
+  const [updateState, setUpdateState] = useState(false);
   const [updatedValue, setUpdatedValue] = useState("");
+
+  const [hoverDelete, setHoverDelete] = useState(false);
+  const [hoverUpdate, setHoverUpdate] = useState(false);
+
+  const hoverDel = () => {
+    setHoverDelete(true);
+  };
+  const noHoverDel = () => {
+    setHoverDelete(false);
+  };
+
+  const hoverUpd = () => {
+    setHoverUpdate(true);
+  };
+  const noHoverUpd = () => {
+    setHoverUpdate(false);
+  };
 
   const updateContent = (e) => {
     setUpdatedValue(e);
+  };
+
+  const delStyle = {
+    display: "flex",
+    alignItems: "center",
+    width: "258px",
+    justifyContent: "space-between",
+    cursor: "pointer",
+    backgroundColor: hoverDelete ? "#414141" : "transparent",
+  };
+  const updStyle = {
+    display: "flex",
+    alignItems: "center",
+    width: "258px",
+    justifyContent: "space-between",
+    cursor: "pointer",
+    backgroundColor: hoverUpdate ? "#414141" : "transparent",
   };
 
   return (
@@ -43,7 +71,13 @@ export default function AdminPostMenu({
             }}
           >
             {updateState ? (
-              <div>
+              <div
+                style={{
+                  backgroundColor: "#282828",
+                  color: "white",
+                  padding: "7px",
+                }}
+              >
                 {" "}
                 <div
                   className="update-post-title"
@@ -53,8 +87,11 @@ export default function AdminPostMenu({
                     justifyContent: "space-between",
                   }}
                 >
-                  <p style={{ padding: "10px" }}>Post update</p>
-                  <AiOutlineArrowLeft onClick={() => setUpdateState(false)} />
+                  <p style={{ padding: "10px" }}>Update</p>
+                  <AiOutlineArrowLeft
+                    onClick={() => setUpdateState(false)}
+                    style={{ padding: "10px", fontSize: "25px" }}
+                  />
                 </div>
                 <input
                   type="text"
@@ -78,9 +115,9 @@ export default function AdminPostMenu({
                 </button>
               </div>
             ) : (
-              <div>
+              <div style={{ backgroundColor: "#282828", color: "white" }}>
                 {" "}
-                <div
+                {/* <div
                   className="pin-post"
                   style={{
                     display: "flex",
@@ -92,40 +129,28 @@ export default function AdminPostMenu({
                 >
                   <p>Pin post to the top</p>
                   <BsPinAngleFill style={{ fontSize: "20px", color: "blue" }} />
-                </div>
+                </div> */}
                 {user.role === "admin" ? (
                   <div
                     className="delete-post-admin"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      width: "258px",
-                      justifyContent: "space-between",
-                      cursor: "pointer",
-                    }}
+                    style={delStyle}
+                    onMouseEnter={hoverDel}
+                    onMouseLeave={noHoverDel}
+                    onClick={() => deletePost(post)}
                   >
                     <p>Delete post</p>
-                    <AiFillDelete
-                      style={{ fontSize: "20px", color: "red" }}
-                      onClick={() => deletePost(post)}
-                    />
+                    <AiFillDelete style={{ fontSize: "20px", color: "red" }} />
                   </div>
                 ) : null}
                 <div
                   className="update-post-admin"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    width: "258px",
-                    justifyContent: "space-between",
-                    cursor: "pointer",
-                  }}
+                  style={updStyle}
+                  onMouseEnter={hoverUpd}
+                  onMouseLeave={noHoverUpd}
+                  onClick={() => setUpdateState(true)}
                 >
                   <p>Update post</p>
-                  <BsFillPenFill
-                    style={{ fontSize: "20px", color: "green" }}
-                    onClick={() => setUpdateState(true)}
-                  />
+                  <BsFillPenFill style={{ fontSize: "20px", color: "green" }} />
                 </div>
               </div>
             )}

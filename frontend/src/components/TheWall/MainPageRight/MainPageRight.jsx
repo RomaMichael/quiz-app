@@ -5,84 +5,89 @@ import { useUsers } from "../../../context/UserProvider";
 import { useGamesResults } from "../../../context/GamesResultsProvider";
 
 export default function MainPageRight() {
-  const { user, allOfUsers } = useUsers();
+  const { user, bestTestsResult, bestMemoryPlayer } = useUsers();
   const { memoryResults } = useGamesResults();
-  const bestUserTotal = allOfUsers.sort((a, b) => {
-    return Number(b.testsScore) - Number(a.testsScore);
-  });
 
-  if (!bestUserTotal[0]) {
+  if (!bestTestsResult) {
     return <div>Loading...</div>;
   }
-  const bestTestsResult = bestUserTotal[0];
-
-  const sortPlayers = allOfUsers.sort((a, b) => {
-    return Number(a.memoryGameRecord) - Number(b.memoryGameRecord);
-  });
-
-  const bestMemoryPlayer = sortPlayers[0];
 
   return (
-    <div className="mainPage-right">
+    <>
       <div className="mainPage-right-container">
         <div className="best-test-results">
-          <p>Best tests score</p>
           <Link to={bestTestsResult._id}>
-            <img
-              src={bestTestsResult.avatar.url}
-              alt={bestTestsResult.username}
-            />
+            <p className="best-result-title">Best tests score</p>
+            <div className="best-test-results-content">
+              <div className="best-test-results-picture">
+                <img
+                  src={bestTestsResult.avatar.url}
+                  alt={bestTestsResult.username}
+                />
+              </div>
+              <div className="best-test-results-props">
+                {bestTestsResult._id === user._id ? (
+                  <div>
+                    {" "}
+                    <p style={{ paddingBottom: "10px" }}>
+                      {" "}
+                      My score: {bestTestsResult.testsScore}
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <p>
+                      {bestTestsResult.username}`s score:{" "}
+                      {bestTestsResult.testsScore}
+                    </p>
+                    <p style={{ paddingBottom: "10px" }}>
+                      My score: {user.testsScore}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </Link>
-          {bestTestsResult._id === user._id ? (
-            <div>
-              {" "}
-              <p style={{ paddingBottom: "10px" }}>
-                {" "}
-                My score: {bestTestsResult.testsScore}
-              </p>
-            </div>
-          ) : (
-            <div>
-              <p>
-                {bestTestsResult.username}`s score: {bestTestsResult.testsScore}
-              </p>
-              <p style={{ paddingBottom: "10px" }}>
-                My score: {user.testsScore}
-              </p>
-            </div>
-          )}
         </div>
         {memoryResults.length ? (
           <div className="best-memory-player">
-            <p>Best Memory cards Player</p>
             <Link to={bestMemoryPlayer._id}>
-              <img
-                src={bestMemoryPlayer.avatar.url}
-                alt={bestMemoryPlayer.username}
-              />
+              <p className="best-memory-player-title">
+                Best Memory cards Player
+              </p>
+              <div className="best-memory-player-content">
+                <div className="best-memory-player-picture">
+                  <img
+                    src={bestMemoryPlayer.avatar.url}
+                    alt={bestMemoryPlayer.username}
+                  />
+                </div>
+                <div className="best-memory-player-props">
+                  {bestMemoryPlayer._id === user._id ? (
+                    <div>
+                      {" "}
+                      <p style={{ paddingBottom: "10px" }}>
+                        {" "}
+                        My score: {bestMemoryPlayer.memoryGameRecord}
+                      </p>
+                    </div>
+                  ) : (
+                    <div>
+                      <p>
+                        {bestMemoryPlayer.username}`s score:{" "}
+                        {bestMemoryPlayer.memoryGameRecord}
+                      </p>
+                      <p style={{ paddingBottom: "10px" }}>
+                        My score: {user.memoryGameRecord}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
             </Link>
-            {bestMemoryPlayer._id === user._id ? (
-              <div>
-                {" "}
-                <p style={{ paddingBottom: "10px" }}>
-                  {" "}
-                  My score: {bestMemoryPlayer.memoryGameRecord}
-                </p>
-              </div>
-            ) : (
-              <div>
-                <p>
-                  {bestMemoryPlayer.username}`s score:{" "}
-                  {bestMemoryPlayer.memoryGameRecord}
-                </p>
-                <p style={{ paddingBottom: "10px" }}>
-                  My score: {user.memoryGameRecord}
-                </p>
-              </div>
-            )}
           </div>
         ) : null}
       </div>
-    </div>
+    </>
   );
 }

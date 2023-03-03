@@ -1,12 +1,13 @@
 .statistics {
-  margin-top: 100px;
   display: flex;
   justify-content: center;
+  background-color: #a5b7fd;
+  height: 100vh;
   .statistics-container {
-    width: 90vw;
+    width: 80vw;
     display: flex;
     justify-content: space-between;
-
+    margin-top: 100px;
     .filters {
       label {
         display: flex;
@@ -33,6 +34,26 @@
           font-size: 30px;
           cursor: pointer;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .statistics {
+    min-height: 900px;
+    .statistics-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .filters {
+        margin-bottom: 40px;
+      }
+      .statistics-information {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
     }
   }

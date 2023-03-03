@@ -1,12 +1,14 @@
 .statistics {
-  margin-top: 100px;
   display: flex;
   justify-content: center;
+  background-color: #a5b7fd;
+  height: 100vh;
 }
 .statistics .statistics-container {
-  width: 90vw;
+  width: 80vw;
   display: flex;
   justify-content: space-between;
+  margin-top: 100px;
 }
 .statistics .statistics-container .filters label {
   display: flex;
@@ -29,4 +31,23 @@
   background-color: transparent;
   font-size: 30px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+  .statistics {
+    min-height: 900px;
+  }
+  .statistics .statistics-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .statistics .statistics-container .filters {
+    margin-bottom: 40px;
+  }
+  .statistics .statistics-container .statistics-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }/*# sourceMappingURL=Statistics.css.map */

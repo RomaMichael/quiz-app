@@ -8,15 +8,46 @@
   position: relative;
   right: 50px;
 }
+.wallContent .mobile-only-button {
+  display: none;
+}
 .wallContent .post-send-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40vw;
 }
 .wallContent .posts {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 150px;
+}
+
+@media screen and (max-width: 850px) {
+  .wallContent {
+    width: 100vw;
+  }
+  .wallContent .mobile-only-button {
+    position: relative;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70vw;
+  }
+  .wallContent .mobile-only-button .show-best-players-responsive {
+    background-color: transparent;
+    border: none;
+    color: rgb(255, 0, 166);
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .wallContent .post-send-container {
+    width: 100vw;
+  }
+  .wallContent .posts {
+    display: flex;
+    justify-content: center;
+  }
 }/*# sourceMappingURL=WallContent.css.map */

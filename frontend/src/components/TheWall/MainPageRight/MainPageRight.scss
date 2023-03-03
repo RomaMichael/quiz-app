@@ -1,35 +1,63 @@
-.mainPage-right {
-  width: 30vw;
-
+.mainPage-right-container {
   position: fixed;
-  right: 0px;
+  right: 30px;
+  top: 110px;
   z-index: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   align-items: center;
 
-  .mainPage-right-container {
-    position: relative;
-    top: 60px;
-  }
   .best-test-results {
-    background-color: rgb(48, 250, 240);
+    background-color: #282828;
     width: 200px;
     border-radius: 10px;
-
-    img {
-      width: 200px;
-      height: 140px;
+    .best-result-title {
+      color: rgb(1, 244, 1);
+      font-weight: 500;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      .best-test-results-content {
+        .best-test-results-picture {
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 100px;
+          }
+        }
+        .best-test-results-props {
+          color: white;
+        }
+      }
     }
   }
+
   .best-memory-player {
-    background-color: rgb(109, 250, 48);
+    background-color: #282828;
     width: 200px;
     border-radius: 10px;
-    img {
-      width: 200px;
-      height: 140px;
+    .best-memory-player-title {
+      color: rgb(1, 244, 1);
+      font-weight: 500;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      .best-memory-player-content {
+        .best-memory-player-picture {
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 100px;
+          }
+        }
+        .best-memory-player-props {
+          color: white;
+        }
+      }
     }
   }
 }

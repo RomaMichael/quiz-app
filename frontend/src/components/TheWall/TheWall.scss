@@ -14,31 +14,33 @@
         top: 50px;
       }
     }
-    .mainpage-left {
-      display: block;
-      background-color: green;
-    }
   }
 }
 
 @media screen and (max-width: 850px) {
   .the-wall {
     min-height: 600px;
+    display: flex;
 
     .the-wall-container {
       display: flex;
-
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
 
       .mainpage-main {
         display: flex;
         flex-direction: column;
+
         gap: 10px;
         align-items: center;
         position: relative;
         top: 50px;
       }
       .mainpage-left {
+        display: none;
+      }
+      .mainpage-right {
         display: none;
       }
     }

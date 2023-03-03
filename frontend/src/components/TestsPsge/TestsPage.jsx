@@ -25,34 +25,34 @@ export default function TestsPage() {
     navigate("/thetest", { replace: true });
   };
 
-  const easyGeo = () => {
-    setTest("geo");
+  const easyColors = () => {
+    setTest("colors and shapes");
     setTestLevel("easy");
     navigate("/thetest", { replace: true });
   };
-  const mediumGeo = () => {
-    setTest("geo");
+  const mediumColors = () => {
+    setTest("colors and shapes");
     setTestLevel("medium");
     navigate("/thetest", { replace: true });
   };
-  const hardGeo = () => {
-    setTest("geo");
+  const hardColors = () => {
+    setTest("colors and shapes");
     setTestLevel("hard");
     navigate("/thetest", { replace: true });
   };
 
-  const easyMusic = () => {
-    setTest("music");
+  const easyAnimals = () => {
+    setTest("animals");
     setTestLevel("easy");
     navigate("/thetest", { replace: true });
   };
-  const mediumMusic = () => {
-    setTest("music");
+  const mediumAnimals = () => {
+    setTest("animals");
     setTestLevel("medium");
     navigate("/thetest", { replace: true });
   };
-  const hardMusic = () => {
-    setTest("music");
+  const hardAnimals = () => {
+    setTest("animals");
     setTestLevel("hard");
     navigate("/thetest", { replace: true });
   };
@@ -75,26 +75,26 @@ export default function TestsPage() {
               <button onClick={hardMath}>Hard</button>
             </div>
           </div>
-          <div className="geo-test">
+          <div className="colors-test">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREUv_UnUdDtkvXm_0M2Hkd5TtiYHqGrF5NYg&usqp=CAU"
-              alt="geo-test"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRWllMQeENi2uGsX7QsX19nuuVG4x8VEx3ow&usqp=CAU"
+              alt="colors-test"
             />
-            <div className="buttons-level-geo">
-              <button onClick={easyGeo}>Easy</button>
-              <button onClick={mediumGeo}>Medium</button>
-              <button onClick={hardGeo}>Hard</button>
+            <div className="buttons-level-colors">
+              <button onClick={easyColors}>Easy</button>
+              <button onClick={mediumColors}>Medium</button>
+              <button onClick={hardColors}>Hard</button>
             </div>
           </div>
-          <div className="music-test">
+          <div className="animals-test">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1E8NQ01sYCG3visoqzW6brBZP4DN0bWkmYA&usqp=CAU"
-              alt="music-test"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrhw3IXIijfa-b047Eb23f2YUgbASkNXWgIQ&usqp=CAU"
+              alt="animals-test"
             />
-            <div className="buttons-level-music">
-              <button onClick={easyMusic}>Easy</button>
-              <button onClick={mediumMusic}>Medium</button>
-              <button onClick={hardMusic}>Hard</button>
+            <div className="buttons-level-animals">
+              <button onClick={easyAnimals}>Easy</button>
+              <button onClick={mediumAnimals}>Medium</button>
+              <button onClick={hardAnimals}>Hard</button>
             </div>
           </div>
         </div>

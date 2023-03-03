@@ -4,10 +4,11 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import { GoThreeBars } from "react-icons/go";
+import { FiLogOut } from "react-icons/fi";
 import { useUsers } from "../../context/UserProvider";
 import { Link } from "react-router-dom";
 
-export default function TemporaryDrawer({}) {
+export default function ResponsiveNav({ logout }) {
   const { user } = useUsers();
 
   const [state, setState] = useState({
@@ -31,15 +32,7 @@ export default function TemporaryDrawer({}) {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      ></List>
-    </Box>
+    ></Box>
   );
 
   return (
@@ -61,6 +54,7 @@ export default function TemporaryDrawer({}) {
                 textDecoration: "none",
                 color: "black",
               }}
+              onClick={toggleDrawer(anchor, false)}
             >
               {" "}
               <p
@@ -79,6 +73,7 @@ export default function TemporaryDrawer({}) {
             <Link
               to="/statistics"
               style={{ textDecoration: "none", color: "black" }}
+              onClick={toggleDrawer(anchor, false)}
             >
               {" "}
               <p
@@ -98,6 +93,7 @@ export default function TemporaryDrawer({}) {
             <Link
               to="/testspage"
               style={{ textDecoration: "none", color: "black" }}
+              onClick={toggleDrawer(anchor, false)}
             >
               <p
                 style={{
@@ -115,6 +111,7 @@ export default function TemporaryDrawer({}) {
             <Link
               to="/games"
               style={{ textDecoration: "none", color: "black" }}
+              onClick={toggleDrawer(anchor, false)}
             >
               <p
                 style={{
@@ -128,6 +125,21 @@ export default function TemporaryDrawer({}) {
                 Games
               </p>
             </Link>
+            <p
+              style={{
+                fontWeight: "700",
+                width: "150px",
+                fontSize: "22px",
+                display: "flex",
+                justifyContent: "flex-start",
+                cursor: "pointer",
+                alignItems: "center",
+                gap: "10px",
+              }}
+              onClick={logout}
+            >
+              <FiLogOut /> Logout
+            </p>
           </Drawer>
         </React.Fragment>
       ))}

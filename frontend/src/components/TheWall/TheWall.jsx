@@ -1,14 +1,7 @@
-import React, { useState } from "react";
-import { useUsers } from "../../context/UserProvider";
-import { useWallContent } from "../../context/WallProvider";
+import React from "react";
 import "./TheWall.css";
-
-import uuid4 from "uuid4";
 import WallContent from "./WallContent/WallContent";
-
-import { useEffect } from "react";
 import MainPageLeft from "./MainPageSide/MainPageLeft";
-
 import MainPageRight from "./MainPageRight/MainPageRight";
 
 export default function TheWall() {

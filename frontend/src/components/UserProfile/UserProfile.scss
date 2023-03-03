@@ -1,9 +1,7 @@
 .user-profile {
-  background-image: url("https://wallpapercave.com/dwp2x/wp2912715.jpg");
+  background-color: #a5b7fd;
   min-height: 800px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
   display: flex;
   justify-content: center;
   .user-profile-container {
@@ -11,7 +9,7 @@
     .user-profile-title {
       margin-top: 100px;
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-      font-size: 27px;
+      font-size: 23px;
       display: flex;
       gap: 70px;
       img {
@@ -22,7 +20,22 @@
     }
     .my-wall {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .user-profile {
+    .user-profile-container {
+      .user-profile-title {
+        display: "flex";
+        flex-direction: column;
+        align-items: center;
+        img {
+          display: none;
+        }
+      }
     }
   }
 }

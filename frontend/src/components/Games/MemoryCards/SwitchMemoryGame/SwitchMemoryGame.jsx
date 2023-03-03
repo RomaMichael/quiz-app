@@ -114,7 +114,7 @@ export default function SwitchMemoryGame({
                     {card.picked ? (
                       <div
                         style={{
-                          width: "150px",
+                          width: "12vw",
                           height: "100px",
                           borderRadius: "8px",
                           border: "1px solid black",
@@ -124,7 +124,7 @@ export default function SwitchMemoryGame({
                       <img
                         src={card.img}
                         alt={card.name}
-                        style={{ width: "150px", height: "100px" }}
+                        style={{ width: "12vw", height: "100px" }}
                         className="animal-card"
                       />
                     )}

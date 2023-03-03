@@ -1,7 +1,7 @@
 .post-body {
   background-color: white;
   box-shadow: 6px 6px 6px grey;
-  width: 40vw;
+  width: 45vw;
   min-height: 200px;
   border-radius: 10px;
   border: 1px solid grey;
@@ -9,4 +9,14 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 5px;
+}
+
+@media screen and (max-width: 850px) {
+  .post-body {
+    width: 70vw;
+  }
+  .post-body .post-title .time-and-date {
+    font-size: 13px;
+    margin-left: 10px;
+  }
 }/*# sourceMappingURL=EachPost.css.map */

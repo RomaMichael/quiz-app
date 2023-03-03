@@ -30,8 +30,8 @@ export default function Statistics() {
             >
               <option value="all">All</option>
               <option value="math">Math</option>
-              <option value="geo">Geo</option>
-              <option value="music">Music</option>
+              <option value="colors and shapes">Colors and shapes</option>
+              <option value="animals">Animals</option>
             </select>
           </label>
           <label

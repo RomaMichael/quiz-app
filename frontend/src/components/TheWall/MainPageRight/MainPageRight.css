@@ -1,32 +1,53 @@
-.mainPage-right {
-  width: 30vw;
+.mainPage-right-container {
   position: fixed;
-  right: 0px;
+  right: 30px;
+  top: 110px;
   z-index: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   align-items: center;
 }
-.mainPage-right .mainPage-right-container {
-  position: relative;
-  top: 60px;
-}
-.mainPage-right .best-test-results {
-  background-color: rgb(48, 250, 240);
+.mainPage-right-container .best-test-results {
+  background-color: #282828;
   width: 200px;
   border-radius: 10px;
 }
-.mainPage-right .best-test-results img {
-  width: 200px;
-  height: 140px;
+.mainPage-right-container .best-test-results .best-result-title {
+  color: rgb(1, 244, 1);
+  font-weight: 500;
 }
-.mainPage-right .best-memory-player {
-  background-color: rgb(109, 250, 48);
+.mainPage-right-container .best-test-results a {
+  text-decoration: none;
+  color: black;
+}
+.mainPage-right-container .best-test-results a .best-test-results-content .best-test-results-picture img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+}
+.mainPage-right-container .best-test-results a .best-test-results-content .best-test-results-props {
+  color: white;
+}
+.mainPage-right-container .best-memory-player {
+  background-color: #282828;
   width: 200px;
   border-radius: 10px;
 }
-.mainPage-right .best-memory-player img {
-  width: 200px;
-  height: 140px;
+.mainPage-right-container .best-memory-player .best-memory-player-title {
+  color: rgb(1, 244, 1);
+  font-weight: 500;
+}
+.mainPage-right-container .best-memory-player a {
+  text-decoration: none;
+  color: black;
+}
+.mainPage-right-container .best-memory-player a .best-memory-player-content .best-memory-player-picture img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+}
+.mainPage-right-container .best-memory-player a .best-memory-player-content .best-memory-player-props {
+  color: white;
 }/*# sourceMappingURL=MainPageRight.css.map */

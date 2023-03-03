@@ -6,12 +6,14 @@ import { useUsers } from "../../../context/UserProvider";
 import { useWallContent } from "../../../context/WallProvider";
 import uuid4 from "uuid4";
 import { useTimeAndDate } from "../../../context/TimeAndDateProvider";
+import ResponsiveBests from "../MainPageSide/ResponsiveSection/ResponsiveBests";
 
 export default function WallContent({}) {
   const { user, setUser, updateUser } = useUsers();
   const { wallContent, fetchWallData } = useWallContent();
   const [postContent, setPostContent] = useState("");
   const { currentDate, currentTime } = useTimeAndDate();
+  const [showBests, setShowBests] = useState(false);
 
   const postAuthor = {
     username: user.username,
@@ -43,6 +45,20 @@ export default function WallContent({}) {
   };
   return (
     <div className="wallContent">
+      <div className="mobile-only-button">
+        <button
+          className="show-best-players-responsive"
+          onClick={() => setShowBests(!showBests)}
+        >
+          {showBests ? "Hide best players" : "Show best players"}
+        </button>
+        {showBests ? (
+          <div className="responsive-best-players">
+            <ResponsiveBests />
+          </div>
+        ) : null}
+      </div>
+
       <div className="post-send-container">
         <PostInput
           setPostContent={setPostContent}

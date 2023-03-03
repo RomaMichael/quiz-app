@@ -1,13 +1,13 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Nav.css";
-import { FaUserPlus } from "react-icons/fa";
+
 import { useUsers } from "../../context/UserProvider";
 
 import UserProps from "../MUI/UserProps";
 
 import Notifications from "../MUI/Notifications/Notifications";
-import TemporaryDrawer from "../MUI/TemporaryDrawer";
+import ResponsiveNav from "../MUI/ResponsiveNav";
 
 export default function Nav() {
   const { user, logout } = useUsers();
@@ -40,7 +40,7 @@ export default function Nav() {
               </div>
               <div className="burger-menu">
                 {" "}
-                <TemporaryDrawer />
+                <ResponsiveNav logout={logout} />
               </div>
             </div>
           ) : null}

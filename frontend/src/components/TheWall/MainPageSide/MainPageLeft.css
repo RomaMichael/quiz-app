@@ -1,0 +1,15 @@
+.mainPageSide-container {
+  margin-top: 100px;
+  margin-left: 50px;
+  width: 23vw;
+  height: 600px;
+  position: fixed;
+  top: 50px;
+  z-index: 0;
+}
+
+@media screen and (max-width: 850px) {
+  .mainPageSide-container {
+    display: none;
+  }
+}/*# sourceMappingURL=MainPageLeft.css.map */

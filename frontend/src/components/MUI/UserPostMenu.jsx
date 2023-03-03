@@ -7,15 +7,41 @@ import { AiFillDelete } from "react-icons/ai";
 import { BsFillPenFill } from "react-icons/bs";
 import { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-
-export default function UserPostMenu({
-  deletePost,
-  post,
-  redactPost,
-  updateState,
-  setUpdateState,
-}) {
+export default function UserPostMenu({ deletePost, post, redactPost }) {
   const [updatedValue, setUpdatedValue] = useState("");
+  const [updateState, setUpdateState] = useState(false);
+  const [hoverDelete, setHoverDelete] = useState(false);
+  const [hoverUpdate, setHoverUpdate] = useState(false);
+
+  const hoverDel = () => {
+    setHoverDelete(true);
+  };
+  const noHoverDel = () => {
+    setHoverDelete(false);
+  };
+
+  const hoverUpd = () => {
+    setHoverUpdate(true);
+  };
+  const noHoverUpd = () => {
+    setHoverUpdate(false);
+  };
+  const delStyle = {
+    display: "flex",
+    alignItems: "center",
+    width: "258px",
+    justifyContent: "space-between",
+    cursor: "pointer",
+    backgroundColor: hoverDelete ? "#414141" : "transparent",
+  };
+  const updStyle = {
+    display: "flex",
+    alignItems: "center",
+    width: "258px",
+    justifyContent: "space-between",
+    cursor: "pointer",
+    backgroundColor: hoverUpdate ? "#414141" : "transparent",
+  };
 
   const updateContent = (e) => {
     setUpdatedValue(e);
@@ -42,7 +68,7 @@ export default function UserPostMenu({
             }}
           >
             {updateState ? (
-              <div>
+              <div style={{ backgroundColor: "#282828", color: "white" }}>
                 {" "}
                 <div
                   className="update-post-title"
@@ -52,8 +78,11 @@ export default function UserPostMenu({
                     justifyContent: "space-between",
                   }}
                 >
-                  <p style={{ padding: "10px" }}>Post update</p>
-                  <AiOutlineArrowLeft onClick={() => setUpdateState(false)} />
+                  <p style={{ padding: "10px" }}>Update</p>
+                  <AiOutlineArrowLeft
+                    onClick={() => setUpdateState(false)}
+                    style={{ padding: "10px", fontSize: "25px" }}
+                  />
                 </div>
                 <input
                   type="text"
@@ -77,39 +106,27 @@ export default function UserPostMenu({
                 </button>
               </div>
             ) : (
-              <div>
+              <div style={{ backgroundColor: "#282828", color: "white" }}>
                 {" "}
                 <div
                   className="delete-post-user"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    width: "258px",
-                    justifyContent: "space-between",
-                    cursor: "pointer",
-                  }}
+                  style={delStyle}
+                  onMouseEnter={hoverDel}
+                  onMouseLeave={noHoverDel}
+                  onClick={() => deletePost(post)}
                 >
                   <p>Delete post</p>
-                  <AiFillDelete
-                    style={{ fontSize: "20px", color: "red" }}
-                    onClick={() => deletePost(post)}
-                  />
+                  <AiFillDelete style={{ fontSize: "20px", color: "red" }} />
                 </div>
                 <div
                   className="update-post-user"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    width: "258px",
-                    justifyContent: "space-between",
-                    cursor: "pointer",
-                  }}
+                  style={updStyle}
+                  onClick={() => setUpdateState(true)}
+                  onMouseEnter={hoverUpd}
+                  onMouseLeave={noHoverUpd}
                 >
                   <p>Update post</p>
-                  <BsFillPenFill
-                    style={{ fontSize: "20px", color: "green" }}
-                    onClick={() => setUpdateState(true)}
-                  />
+                  <BsFillPenFill style={{ fontSize: "20px", color: "green" }} />
                 </div>
               </div>
             )}
